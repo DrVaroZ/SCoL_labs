@@ -6,7 +6,9 @@ students = {
     "Egor": {"10", "11", "12", "13"}
 }
 
-students.get("Vadim").add("6")
+
+# students.get("Vadim").add("6")
+
 
 
 class Container:
@@ -18,7 +20,6 @@ class Container:
     def add(self, *element):
         for i in element:
             self.usernames.get(self.current_user).add(i)
-        return self.usernames.get(self.current_user)
 
     def remove(self, element):
         remove_flag = False
@@ -76,20 +77,4 @@ class Container:
             return found_elements
 
 
-users = Container(students)
-print(users.find("4", "3", "35"))
-f = users.add("8")
-print("updated set: ", f)
-users.list()
-users.switch("Denis")
-users.list()
-print(users.find("4", "9", "35"))
-d = users.add("10")
-print("updated set Denis: ", d)
-users.remove("6")
-print("updated set Denis: ", d)
-print(users.grep('[0127]'))
-users.save()
-test_dict = users.load()
-print(test_dict)
-print(users.usernames)
+
