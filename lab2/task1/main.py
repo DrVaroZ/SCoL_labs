@@ -1,6 +1,6 @@
 import parser
 
-f = open("/home/vadim_zhur/scol_labs/lab2/task1/text.txt", "r")
+f = open("text.txt", "r")
 file_text = f.read()
 print(file_text)
 

@@ -41,12 +41,12 @@ class Container:
             self.usernames[self.current_user] = set()
 
     def save(self):
-        with open("/home/vadim_zhur/scol_labs/lab2/task2/storage.txt", "w") as f:
+        with open("storage.txt", "w") as f:
             for i in self.usernames.keys():
                 f.write(i + " " + " ".join([str(x) for x in self.usernames[i]]) + "\n")
 
     def load(self):
-        with open("/home/vadim_zhur/scol_labs/lab2/task2/storage.txt", "r") as f:
+        with open("storage.txt", "r") as f:
             dict_temp = {}
             for line in f:
                 values = line.split(' ')

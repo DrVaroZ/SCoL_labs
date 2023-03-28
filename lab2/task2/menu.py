@@ -18,7 +18,7 @@ print("Enter 8 to switch")
 
 
 def load_students():
-    with open("/home/vadim_zhur/scol_labs/lab2/task2/storage.txt", "r") as f:
+    with open("storage.txt", "r") as f:
         students = {}
         for line in f:
             values = line.split(' ')
