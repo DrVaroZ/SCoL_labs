@@ -10,33 +10,46 @@ print("Enter 6 to save")
 print("Enter 7 to load")
 print("Enter 8 to switch")
 
-students = {
+'''students = {
     "Vadim": {"1", "2", "3", "4", "5"},
     "Denis": {"6", "7", "8", "9"},
     "Egor": {"10", "11", "12", "13"}
-}
+}'''
 
-containerized_students = Container(students)
+
+def load_students():
+    with open("/home/vadim_zhur/scol_labs/lab2/task2/storage.txt", "r") as f:
+        students = {}
+        for line in f:
+            values = line.split(' ')
+            students[values[0]] = set(x.replace("\n", "") for x in values[1:len(values)])
+        return students
+
+
+students_names = load_students()
+print(students_names)
+containerized_students = Container(students_names)
 
 
 def menu(users):
     username = str(input("Enter username: "))
     users.switch(username)
+    containerized_students.load()
 
     while True:
         choice = int(input("Enter your choice: "))
 
         if choice == 1:
-            added_data = str(input("Enter data to add: "))
-            users.add(added_data)
+            added_data = (input("Enter data to add: ")).split(' ')
+            users.add(*added_data)
         elif choice == 2:
             removed_data = str(input("Enter data to remove: "))
             users.remove(removed_data)
         elif choice == 3:
-            found_data = str(input("Enter data to find: "))
-            print(users.find(found_data))
+            found_data = (input("Enter data to find: ")).split(' ')
+            print(users.find(*found_data))
         elif choice == 4:
-            print(users.list())
+            users.list()
         elif choice == 5:
             regex = str(input("Enter a regular expression to find: "))
             print(users.grep(regex))
@@ -48,6 +61,7 @@ def menu(users):
         elif choice == 8:
             switched_username = str(input("Enter username to switch: "))
             users.switch(switched_username)
+            containerized_students.load()
         elif choice == 0:
             break
         else:

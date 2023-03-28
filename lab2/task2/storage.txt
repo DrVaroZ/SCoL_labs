@@ -1,4 +1,4 @@
-Vadim 2 5 3 4 1
-Denis 8 6 7 9
-Egor 10 11 13
-
+Vadim 3 4 66 2 1 5
+Denis 9 8 7 6
+Egor 13 12 10 11
+ef 123 3 24

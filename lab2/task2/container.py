@@ -1,21 +1,22 @@
 import re
 
-students = {
+'''students = {
     "Vadim": {"1", "2", "3", "4", "5"},
     "Denis": {"6", "7", "8", "9"},
     "Egor": {"10", "11", "12", "13"}
-}
+}'''
 
 
 # students.get("Vadim").add("6")
 
 
-
 class Container:
     current_user = "Vadim"
+    usernames_keys = []
 
     def __init__(self, usernames):
         self.usernames = usernames
+        self.usernames_keys.append(usernames.keys())
 
     def add(self, *element):
         for i in element:
@@ -35,6 +36,9 @@ class Container:
 
     def switch(self, new_user):
         self.current_user = new_user
+
+        if self.current_user not in self.usernames_keys:
+            self.usernames[self.current_user] = set()
 
     def save(self):
         with open("/home/vadim_zhur/scol_labs/lab2/task2/storage.txt", "w") as f:
