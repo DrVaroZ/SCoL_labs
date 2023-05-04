@@ -16,9 +16,11 @@ print("Enter 8 to switch")
     "Egor": {"10", "11", "12", "13"}
 }'''
 
+path = str(input("Enter file_path:"))
 
-def load_students():
-    with open("storage.txt", "r") as f:
+
+def load_students(file_path):
+    with open(path, "r") as f:
         students = {}
         for line in f:
             values = line.split(' ')
@@ -26,7 +28,7 @@ def load_students():
         return students
 
 
-students_names = load_students()
+students_names = load_students(path)
 print(students_names)
 containerized_students = Container(students_names)
 
@@ -34,7 +36,7 @@ containerized_students = Container(students_names)
 def menu(users):
     username = str(input("Enter username: "))
     users.switch(username)
-    containerized_students.load()
+    containerized_students.load(path)
 
     while True:
         choice = int(input("Enter your choice: "))
@@ -61,7 +63,7 @@ def menu(users):
         elif choice == 8:
             switched_username = str(input("Enter username to switch: "))
             users.switch(switched_username)
-            containerized_students.load()
+            containerized_students.load(path)
         elif choice == 0:
             break
         else:

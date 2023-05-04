@@ -18,10 +18,9 @@ def calculate_sentences_num(text):
     # print(sentences)
     text = remove_russian_chars(text).lower()
     sentences_amount = len(re.findall(constants.ALL_SENTENCES_PATTERN, text))
-    #sentences_amount -= len(re.findall(constants.INITIALS, text)) * 2
 
     for abbreviation in constants.ONE_WORD_ABBREVIATIONS:
-        sentences_amount -= text.count(abbreviation)  # + " [A-Z]{1,}"
+        sentences_amount -= text.count(abbreviation)
 
     for abbreviation in constants.TWO_WORDS_ABBREVIATIONS:
         sentences_amount -= text.count(abbreviation) * 2
@@ -38,10 +37,9 @@ def declarative_sentences_num(text):
 
     text = remove_russian_chars(text).lower()
     sentences_amount = len(re.findall(constants.DECLARATIVE_SENTENCES_PATTERN, text))
-    #sentences_amount -= len(re.findall(constants.INITIALS, text)) * 2
 
     for abbreviation in constants.ONE_WORD_ABBREVIATIONS:
-        sentences_amount -= text.count(abbreviation)  # + " [A-Z]{1,}"
+        sentences_amount -= text.count(abbreviation)
 
     for abbreviation in constants.TWO_WORDS_ABBREVIATIONS:
         sentences_amount -= text.count(abbreviation) * 2

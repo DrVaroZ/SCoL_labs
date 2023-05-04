@@ -3,8 +3,6 @@ DECLARATIVE_SENTENCES_PATTERN = r'[\.]+'
 WORDS_PATTERN = r'\b[a-zA-Z\d]+\b'
 NUMBERS_PATTERN = r'\b\d+\b'
 
-INITIALS = r'[A-Z]\. [A-Z]\. [A-Z][a-z]+'
-
 ONE_WORD_ABBREVIATIONS = ["etc.", "vs.", "jr.", "sr.", "mr.", "ms.", "mrs.", "smb.", "smth.", "adj.", "prep.", "pp.",
                           "par.", "ex.",
                           "pl.", "edu.", "appx.", "sec.", "gm.", "cm.", "yr.", "jan.", "feb.", "mar.",

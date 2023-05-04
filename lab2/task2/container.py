@@ -45,8 +45,8 @@ class Container:
             for i in self.usernames.keys():
                 f.write(i + " " + " ".join([str(x) for x in self.usernames[i]]) + "\n")
 
-    def load(self):
-        with open("storage.txt", "r") as f:
+    def load(self, file_path):
+        with open(file_path, "r") as f:
             dict_temp = {}
             for line in f:
                 values = line.split(' ')
