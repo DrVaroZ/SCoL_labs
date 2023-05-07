@@ -1,32 +1,40 @@
 TYPE = "type"
 VALUE = "value"
+
+INT = "int"
+FLOAT = "float"
+BOOL = "bool"
+STRING = "str"
+COMPLEX = "complex"
+NONE_TYPE = "NoneType"
+
+LIST = "list"
+TUPLE = "tuple"
+SET = "set"
+BYTES = "bytes"
+
+DICT = "dict"
+
+FUNCTION = "function"
+
+CLASS = "class"
+OBJECT = "object"
+CO_NAMES = "co_names"
+FIELDS = "__fields__"
+OBJECT_TYPE = "__object_type__"
+
+MODULE = "module"
+
 GLOBALS = "__globals__"
 CODE = "__code__"
 NAME = "__name__"
-CLASS = "class"
-FLOAT = "float"
-INT = "int"
-NONE_TYPE = "NoneType"
-COMPLEX = "complex"
-BOOL = "bool"
-STRING = "str"
-LIST = "list"
-TUPLE = "tuple"
-BYTES = "bytes"
-SET = "set"
-DICT = "dict"
-CO_NAMES = "co_names"
-OBJECT = "object"
-FIELDS = "__fields__"
-OBJECT_TYPE = "__object_type__"
-MODULE = "module"
+
 BUILTINS = "__builtins__"
 DOC = "__doc__"
-FUNCTION = "function"
 DEFAULTS = "__defaults__"
 TRUE = "True"
 
-FUNC_ATTRIBUTES = [
+FUNCTION_ATTRIBUTES = [
     "__code__",
     "__name__",
     "__defaults__"
