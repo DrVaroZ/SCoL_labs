@@ -1,4 +1,5 @@
 import inspect
+import types
 from types import CodeType, FunctionType
 from pydoc import locate
 
@@ -56,23 +57,29 @@ def serialize_dict(item):
 
 def serialize_function(item):
     members = inspect.getmembers(item)
-    serialized_dict = {TYPE: get_type(item)}
-    value = {}
-    for obj in members:
-        if obj[0] in FUNCTION_ATTRIBUTES:
-            value[obj[0]] = (obj[1])
-        if obj[0] == CODE:
-            co_names = obj[1].__getattribute__(CO_NAMES)
-            globs = item.__getattribute__(GLOBALS)
-            value[GLOBALS] = {}
-            for obj2 in co_names:
-                if obj2 == item.__name__:
-                    value[GLOBALS][obj2] = item.__name__
-                elif obj2 in globs and not inspect.ismodule(obj2) and obj2 not in __builtins__:
-                    value[GLOBALS][obj2] = globs[obj2]
-    serialized_dict[VALUE] = serialize(value)
+    serialized = dict()
+    serialized['type'] = str(type(item))[8:-2]
+    value = dict()
 
-    return serialized_dict
+    for tmp in members:
+        if tmp[0] in ['__code__', '__name__', '__defaults__']:
+            value[tmp[0]] = (tmp[1])
+        if tmp[0] == '__code__':
+            co_names = tmp[1].__getattribute__('co_names')
+            globs = item.__getattribute__('__globals__')
+            value['__globals__'] = dict()
+
+            for tmp_co_names in co_names:
+                if tmp_co_names == item.__name__:
+                    value['__globals__'][tmp_co_names] = item.__name__
+                elif not inspect.ismodule(tmp_co_names) \
+                        and tmp_co_names in globs:
+                    # and tmp_co_names not in __builtins__:
+                    value['__globals__'][tmp_co_names] = globs[tmp_co_names]
+
+    serialized['value'] = serialize(value)
+
+    return serialized
 
 
 def serialize_class(item):
@@ -159,45 +166,46 @@ def deserialize_dict(item):
 
 
 def deserialize_function(item):
-    deserialized_dict = deserialize(item[VALUE])
+    res_dict = deserialize(item['value'])
 
-    deserialized_dict["code"] = deserialize_code(item)
-    deserialized_dict.pop(CODE)
+    res_dict['code'] = deserialize_code(item)
+    res_dict.pop('__code__')
 
-    deserialized_dict[GLOBALS][BUILTINS] = __builtins__
+    res_dict['globals'] = res_dict['__globals__']
+    res_dict.pop('__globals__')
 
-    deserialized_dict["globals"] = deserialized_dict[GLOBALS]
-    deserialized_dict.pop(GLOBALS)
+    res_dict['name'] = res_dict['__name__']
+    res_dict.pop('__name__')
 
-    deserialized_dict["name"] = deserialized_dict[NAME]
-    deserialized_dict.pop(NAME)
+    res_dict['argdefs'] = res_dict['__defaults__']
+    res_dict.pop('__defaults__')
 
-    deserialized_dict["argdefs"] = deserialized_dict[DEFAULTS]
-    deserialized_dict.pop(DEFAULTS)
+    res = types.FunctionType(**res_dict)
+    if res.__name__ in res.__getattribute__('__globals__'):
+        res.__getattribute__('__globals__')[res.__name__] = res
 
-    result = FunctionType(**deserialized_dict)
-    if result.__name__ in result.__getattribute__(GLOBALS):
-        result.__getattribute__(GLOBALS)[result.__name__] = result
-
-    return result
+    return res
 
 
 def deserialize_code(item):
-    objs = item[VALUE][VALUE]
+    items = item['value']['value']
 
-    for obj in objs:
-        if obj[0][VALUE] == CODE:
-            args = deserialize(obj[1][VALUE])
-            code_dict = {}
+    for tmp in items:
+        if tmp[0]['value'] == '__code__':
+            args = deserialize(tmp[1]['value'])
+            code_dict = dict()
             for arg in args:
                 arg_val = args[arg]
-                if arg != DOC:
+                if arg != '__doc__':
                     code_dict[arg] = arg_val
-
             code_list = [0] * 16
+
             for name in code_dict:
+                if name == 'co_lnotab':
+                    continue
                 code_list[CODE_ARGS.index(name)] = code_dict[name]
-            return CodeType(*code_list)
+
+            return types.CodeType(*code_list)
 
 
 def deserialize_class(item):

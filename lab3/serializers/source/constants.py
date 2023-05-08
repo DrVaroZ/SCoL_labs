@@ -61,7 +61,7 @@ CODE_ARGS = [
     'co_filename',
     'co_name',
     'co_firstlineno',
-    'co_lnotab',
+    'co_linetable',
     'co_freevars',
     'co_cellvars'
 ]
