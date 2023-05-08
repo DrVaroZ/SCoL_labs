@@ -54,7 +54,7 @@ def parse_json(item):
             result[key] = parse_json(temp_str)
     else:
         return item
-    
+
     if is_list:
         return result_list
     else:

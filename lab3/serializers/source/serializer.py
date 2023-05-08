@@ -118,7 +118,7 @@ def serialize_object(item):
 
 
 def deserialize(item):
-    if item[TYPE] in [FLOAT, INT, COMPLEX, NONE_TYPE, BOOL, STRING]:
+    if item[TYPE] in [INT, FLOAT, BOOL, STRING, COMPLEX, NONE_TYPE]:
         return deserialize_single_var(item)
     elif item[TYPE] in [LIST, TUPLE, SET, BYTES]:
         return deserialize_collection(item)
@@ -159,11 +159,53 @@ def deserialize_dict(item):
 
 
 def deserialize_function(item):
-    pass
+    deserialized_dict = deserialize(item[VALUE])
+
+    deserialized_dict["code"] = deserialize_code(item)
+    deserialized_dict.pop(CODE)
+
+    deserialized_dict[GLOBALS][BUILTINS] = __builtins__
+
+    deserialized_dict["globals"] = deserialized_dict[GLOBALS]
+    deserialized_dict.pop(GLOBALS)
+
+    deserialized_dict["name"] = deserialized_dict[NAME]
+    deserialized_dict.pop(NAME)
+
+    deserialized_dict["argdefs"] = deserialized_dict[DEFAULTS]
+    deserialized_dict.pop(DEFAULTS)
+
+    result = FunctionType(**deserialized_dict)
+    if result.__name__ in result.__getattribute__(GLOBALS):
+        result.__getattribute__(GLOBALS)[result.__name__] = result
+
+    return result
+
+
+def deserialize_code(item):
+    objs = item[VALUE][VALUE]
+
+    for obj in objs:
+        if obj[0][VALUE] == CODE:
+            args = deserialize(obj[1][VALUE])
+            code_dict = {}
+            for arg in args:
+                arg_val = args[arg]
+                if arg != DOC:
+                    code_dict[arg] = arg_val
+
+            code_list = [0] * 16
+            for name in code_dict:
+                code_list[CODE_ARGS.index(name)] = code_dict[name]
+            return CodeType(*code_list)
 
 
 def deserialize_class(item):
-    pass
+    class_dict = deserialize(item[VALUE])
+    name = class_dict[NAME]
+    del class_dict[NAME]
+
+    return type(name, (object,), class_dict)
 
 
 def deserialize_module(item):
@@ -171,4 +213,10 @@ def deserialize_module(item):
 
 
 def deserialize_object(item):
-    pass
+    value = deserialize(item[VALUE])
+    result = value[OBJECT_TYPE](**value[FIELDS])
+
+    for key, value in value[FIELDS].items():
+        result.key = value
+
+    return result
