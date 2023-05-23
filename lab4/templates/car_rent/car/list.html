@@ -1,0 +1,27 @@
+{% extends "car_rent/base.html" %}
+{% load static %}
+{% block title %}
+    {% if brand %}{{ brand.name }}{% else %}Cars{% endif %}
+{% endblock %}
+{% block content %}
+    <div id="sidebar">
+        <h3>Cars</h3>
+        <ul>
+            <li {% if not brand %}class="selected"{% endif %}>
+                <a href="{% url "car_rent:car_list" %}">All</a>
+            </li>
+        </ul>
+    </div>
+    <div id="main" class="car-list">
+        <h1>{% if brand %}{{ brand.name }}{% else %}Cars{% endif %}</h1>
+        {% for car in cars %}
+            <div class="item">
+                <a href="{{ car.get_absolute_url }}">
+                    <img src="{% if car.image %}{{ car.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                </a>
+                <a href="{{ car.get_absolute_url }}">{{ car.name }}</a><br>
+                {{ car.brand }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

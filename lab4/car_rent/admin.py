@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Brand, CarModel, Car, CarInstance, Discount, Fine, Client
+from .models import Brand, CarModel, Car, Discount, Fine, Client, Rent
 
 
 @admin.register(Brand)
@@ -14,24 +14,29 @@ class CarModelAdmin(admin.ModelAdmin):
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['brand', 'car_model', 'release_year', 'cost', 'rent_per_day']
+    list_filter = ['brand', 'car_model']
 
 
-@admin.register(CarInstance)
-class CarInstanceAdmin(admin.ModelAdmin):
-    pass
+@admin.register(Rent)
+class RentAdmin(admin.ModelAdmin):
+    list_display = ['car', 'client', 'start_date', 'finish_date', 'amount_of_rent_days', 'rent_cost',
+                    'discount_sum', 'fine_sum', 'result_sum', 'status']
+    list_filter = ['finish_date']
 
 
 @admin.register(Discount)
 class DiscountAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name', 'percentage']
 
 
 @admin.register(Fine)
 class FineAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['name', 'sum_fine']
 
 
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['first_name', 'last_name', 'date_birthday', 'email', 'phone_number', 'number_of_rents',
+                    'discount', 'fines']
+    list_filter = ['discount', 'fines']

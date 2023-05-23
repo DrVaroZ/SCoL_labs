@@ -1,0 +1,16 @@
+{% extends "car_rent/base.html" %}
+{% load static %}
+{% block title %}
+    {% if brand %}{{ brand.title }}{% else %}Cars{% endif %}
+{% endblock %}
+{% block content %}
+    <div class="car-detail">
+        <img src="{% if car.image %}{{ car.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+        <h1>{{ car.brand }}</h1>
+        <h2><a href="{{ car.brand.get_absolute_url }}">{{ car.brand }}</a></h2>
+        {{ car.car_model|linebreaks }}
+        {{ car.release_year|linebreaks }}
+        <p class="cost">${{ car.cost }}</p>
+        <p class="rent_per_day">${{ car.rent_per_day }}</p>
+    </div>
+{% endblock %}
