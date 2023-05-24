@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Car, Brand, CarModel
+from cart.forms import CartAddCarForm
 
 
 def car_list(request, car_brand=None):
@@ -19,7 +20,10 @@ def car_list(request, car_brand=None):
 
 def car_detail(request, id):
     car = get_object_or_404(Car, id=id)
-
+    cart_car_form = CartAddCarForm()
     return render(request,
                   'car_rent/car/detail.html',
-                  {'car': car})
+                  {'car': car, 'cart_car_form': cart_car_form})
+
+
+

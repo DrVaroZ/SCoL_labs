@@ -19,7 +19,7 @@
                 <a href="{{ car.get_absolute_url }}">
                     <img src="{% if car.image %}{{ car.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
                 </a>
-                <a href="{{ car.get_absolute_url }}">{{ car.name }}</a><br>
+                <a href="{{ car.get_absolute_url }}">{{ car.brand }}</a><br>
                 {{ car.brand }}
             </div>
         {% endfor %}

@@ -12,5 +12,11 @@
         {{ car.release_year|linebreaks }}
         <p class="cost">${{ car.cost }}</p>
         <p class="rent_per_day">${{ car.rent_per_day }}</p>
+
+        <form action="{% url "cart:cart_add" car.id %}" method="post">
+            {{ cart_car_form }}
+            {% csrf_token %}
+            <input type="submit" value="Add to cart">
+        </form>
     </div>
 {% endblock %}

@@ -53,7 +53,7 @@ class Cart(object):
         # getting car objects and adding them to cart
         cars = Car.objects.filter(id__in=car_ids)
         for car in cars:
-            self.cart[str(car.id)]['product'] = car
+            self.cart[str(car.id)]['car'] = car
 
         for item in self.cart.values():
             item['rent_per_day'] = Decimal(item['rent_per_day'])

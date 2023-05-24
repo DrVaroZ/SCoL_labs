@@ -7,8 +7,14 @@ from .forms import CartAddCarForm
 
 @require_POST
 def cart_add(request, car_id):
+    print('car id', car_id)
     cart = Cart(request)
+    print(f'len:{len(cart)}')
+
     car = get_object_or_404(Car, id=car_id)
+    if len(cart) >= 1:
+        return redirect('cart:cart_detail')
+    print(car.id)
     form = CartAddCarForm(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
@@ -27,4 +33,6 @@ def cart_remove(request, car_id):
 
 def cart_detail(request):
     cart = Cart(request)
+    for tmp in cart:
+        print(tmp)
     return render(request, 'cart/detail.html', {'cart': cart})

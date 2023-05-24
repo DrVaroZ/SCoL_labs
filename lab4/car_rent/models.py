@@ -15,7 +15,7 @@ class Brand(models.Model):
 
     def get_absolute_url(self):
         return reverse('car_rent:car_list_by_brand',
-                       args=[self.name])
+                       args=[str(self.name)])
 
 
 class CarModel(models.Model):
@@ -93,6 +93,7 @@ class Car(models.Model):
     release_year = models.IntegerField('Release year', max_length=4)
     cost = models.IntegerField('Cost', max_length=9)
     rent_per_day = models.IntegerField('Rent per day', max_length=6)
+    # amount_of_rent_days = models.PositiveIntegerField(default=0)
     # client = models.OneToOneField(Client, on_delete=models.SET_NULL, null=True)
 
     class Meta:
@@ -103,7 +104,7 @@ class Car(models.Model):
 
     def get_absolute_url(self):
         return reverse('car_rent:car_detail',
-                       args=[self.id])
+                       args=[str(self.id)])
 
 
 class Rent(models.Model):
