@@ -12,11 +12,18 @@
         {{ car.release_year|linebreaks }}
         <p class="cost">${{ car.cost }}</p>
         <p class="rent_per_day">${{ car.rent_per_day }}</p>
-
+        {%if user.is_authenticated%}
         <form action="{% url "cart:cart_add" car.id %}" method="post">
             {{ cart_car_form }}
             {% csrf_token %}
             <input type="submit" value="Add to cart">
         </form>
+        {%endif%}
+        {%if user.is_staff%}
+        <td><a href="edit/{{car.id}}/">Edit</a> | <a href="delete/{{car.id}}/">Remove</a></td>
+        {%endif%}
+        <div class="bottom-right">
+            <p>{{ joke }}</p>
+        </div>
     </div>
 {% endblock %}

@@ -69,9 +69,9 @@ class Client(models.Model):
     date_birthday = models.DateField(help_text='Enter your birthday')
     email = models.EmailField(help_text='Enter your email')
     phone_number = models.CharField(max_length=20, help_text='Enter your phone number')
-    number_of_rents = models.PositiveIntegerField(max_length=5)
-    discount = models.ForeignKey(Discount, on_delete=models.SET_NULL, null=True, blank=True)
-    fines = models.ForeignKey(Fine, on_delete=models.CASCADE, blank=True)
+    #number_of_rents = models.PositiveIntegerField(max_length=5)
+    #discount = models.ForeignKey(Discount, on_delete=models.SET_NULL, null=True, blank=True)
+    #fines = models.ForeignKey(Fine, on_delete=models.CASCADE, blank=True)
 
     def __str__(self):
         return '{0} {1}'.format(self.first_name, self.last_name)
@@ -93,6 +93,7 @@ class Car(models.Model):
     release_year = models.IntegerField('Release year', max_length=4)
     cost = models.IntegerField('Cost', max_length=9)
     rent_per_day = models.IntegerField('Rent per day', max_length=6)
+    image = models.ImageField(upload_to='car/%Y/%m/%d', blank=True)
     # amount_of_rent_days = models.PositiveIntegerField(default=0)
     # client = models.OneToOneField(Client, on_delete=models.SET_NULL, null=True)
 

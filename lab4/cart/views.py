@@ -3,10 +3,14 @@ from django.views.decorators.http import require_POST
 from car_rent.models import Car
 from .cart import Cart
 from .forms import CartAddCarForm
+from django.core.exceptions import PermissionDenied
 
 
 @require_POST
 def cart_add(request, car_id):
+    if not request.user.is_authenticated:
+        raise PermissionDenied("No access")
+
     print('car id', car_id)
     cart = Cart(request)
     print(f'len:{len(cart)}')
@@ -25,6 +29,9 @@ def cart_add(request, car_id):
 
 
 def cart_remove(request, car_id):
+    if not request.user.is_authenticated:
+        raise PermissionDenied("No access")
+
     cart = Cart(request)
     car = get_object_or_404(Car, id=car_id)
     cart.remove(car)
@@ -32,6 +39,9 @@ def cart_remove(request, car_id):
 
 
 def cart_detail(request):
+    if not request.user.is_authenticated:
+        raise PermissionDenied("No access")
+
     cart = Cart(request)
     for tmp in cart:
         print(tmp)

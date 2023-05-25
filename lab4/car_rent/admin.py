@@ -14,7 +14,7 @@ class CarModelAdmin(admin.ModelAdmin):
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
-    list_display = ['brand', 'car_model', 'release_year', 'cost', 'rent_per_day']
+    list_display = ['brand', 'car_model', 'release_year', 'cost', 'rent_per_day', 'image']
     list_filter = ['brand', 'car_model']
 
 
@@ -37,6 +37,5 @@ class FineAdmin(admin.ModelAdmin):
 
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name', 'date_birthday', 'email', 'phone_number', 'number_of_rents',
-                    'discount', 'fines']
-    list_filter = ['discount', 'fines']
+    list_display = ['first_name', 'last_name', 'date_birthday', 'email', 'phone_number']
+    #list_filter = ['discount', 'fines']

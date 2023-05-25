@@ -10,17 +10,30 @@
             <li {% if not brand %}class="selected"{% endif %}>
                 <a href="{% url "car_rent:car_list" %}">All</a>
             </li>
+            {% for c in brands %}
+                <li {% if brand.name == c.name %}class="selected" {% endif %}>
+                    <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                </li>
+            {% endfor %}
         </ul>
     </div>
     <div id="main" class="car-list">
-        <h1>{% if brand %}{{ brand.name }}{% else %}Cars{% endif %}</h1>
+        <h1>{% if brand %}{{ brand.name }}{% else %}Cars{% endif %}
+            {% if user.is_staff %}
+                <a href="/create/">Create Car</a>
+            {% endif %}
+            <form action="{{ request.get_full_path }}" method="get">
+                <button type="submit" name="sort" value="ascending">Sort in ascending order</button>
+                <button type="submit" name="sort" value="descending">Sort in descending order</button>
+            </form>
+        </h1>
         {% for car in cars %}
             <div class="item">
                 <a href="{{ car.get_absolute_url }}">
-                    <img src="{% if car.image %}{{ car.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+                    <img src="{% if car.image %}{{ car.image.url }}{% else %}{% static "media/no_image.png" %}{% endif %}">
                 </a>
                 <a href="{{ car.get_absolute_url }}">{{ car.brand }}</a><br>
-                {{ car.brand }}
+                {{ car.brand }} {{ car.car_model }}
             </div>
         {% endfor %}
     </div>
