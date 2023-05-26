@@ -29,6 +29,7 @@ class CarModel(models.Model):
         return self.name
 
 
+'''
 class Discount(models.Model):
     """
     Model representing a discount for clients
@@ -57,6 +58,7 @@ class Fine(models.Model):
 
     def get_absolute_url(self):
         return reverse('fine-detail', args=[str(self.name)])
+'''
 
 
 class Client(models.Model):

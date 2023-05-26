@@ -38,13 +38,37 @@
                 </tr>
             {% endwith %}
         {% endfor %}
+        {% if cart.discount %}
+            <tr class="subtotal">
+                <td>Subtotal</td>
+                <td colspan="4"></td>
+                <td class="num">${{ cart.get_total_price }}</td>
+            </tr>
+            <tr>
+                <td>
+                    "{{ cart.discount.code }}" discount
+                    ({{ cart.discount.discount }}% off)
+                </td>
+                <td colspan="4"></td>
+                <td class="num neg">
+                    - ${{ cart.get_discount|floatformat:"2" }}
+                </td>
+            </tr>
+        {% endif %}
         <tr class="total">
             <td>Total</td>
             <td colspan="4"></td>
-            <td class="num">${{ cart.get_total_price }}</td>
+            <td class="num">
+                ${{ cart.get_total_price_after_discount|floatformat:"2" }}
+            </td>
         </tr>
         </tbody>
     </table>
+    <form action="{% url "discounts:apply" %}" method="post">
+        {{ discount_apply_form }}
+        <input type="submit" value="Apply">
+        {% csrf_token %}
+    </form>
     <p class="text-right">
         <a href="{% url "car_rent:car_list" %}" class="button light">Continue car renting</a>
         <a href="{% url "orders:order_create" %}" class="button">

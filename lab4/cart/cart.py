@@ -1,6 +1,7 @@
 from decimal import Decimal
 from django.conf import settings
 from car_rent.models import Car
+from discounts.models import Discount
 
 
 class Cart(object):
@@ -15,6 +16,9 @@ class Cart(object):
             # save an empty cart in the session
             cart = self.session[settings.CART_SESSION_ID] = {}
         self.cart = cart
+
+        # saving current applied discount
+        self.discount_id = self.session.get('discount_id')
 
     def add(self, car, quantity=1, update_quantity=False):
         """
@@ -77,3 +81,17 @@ class Cart(object):
         # removing cart from session
         del self.session[settings.CART_SESSION_ID]
         self.session.modified = True
+
+    @property
+    def discount(self):
+        if self.discount_id:
+            return Discount.objects.get(id=self.discount_id)
+        return None
+
+    def get_discount(self):
+        if self.discount:
+            return (self.discount.discount / Decimal('100')) * self.get_total_price()
+        return Decimal('0')
+
+    def get_total_price_after_discount(self):
+        return self.get_total_price() - self.get_discount()

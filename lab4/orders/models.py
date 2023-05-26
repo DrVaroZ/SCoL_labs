@@ -1,10 +1,21 @@
 from django.db import models
 from car_rent.models import Car, Client
+from decimal import Decimal
+from django.core.validators import MinValueValidator, MaxValueValidator
+from discounts.models import Discount
 
 
 class Order(models.Model):
     client = models.ForeignKey(Client, on_delete=models.CASCADE, null=True)
     created = models.DateTimeField(auto_now_add=True)
+    discount = models.ForeignKey(Discount,
+                                 related_name='orders',
+                                 on_delete=models.CASCADE,
+                                 null=True,
+                                 blank=True)
+    discount_percentage = models.IntegerField(default=0,
+                                              validators=[MinValueValidator(0),
+                                                          MaxValueValidator(100)])
 
     class Meta:
         ordering = ('-created',)
@@ -15,7 +26,8 @@ class Order(models.Model):
         return 'Order {}'.format(self.id)
 
     def get_total_cost(self):
-        return sum(item.get_cost() for item in self.items.all())
+        total_cost = sum(item.get_cost() for item in self.items.all())
+        return total_cost - total_cost * (self.discount_percentage / Decimal('100'))
 
 
 class OrderItem(models.Model):

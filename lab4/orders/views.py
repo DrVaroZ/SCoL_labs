@@ -8,6 +8,9 @@ from django.core.exceptions import PermissionDenied
 
 
 def order_create(request):
+    if not request.user.is_authenticated:
+        raise PermissionDenied("No access")
+
     cart = Cart(request)
     if request.method == 'POST':
         order = Order.objects.create(client=Client.objects.filter(email=request.user.email).first())

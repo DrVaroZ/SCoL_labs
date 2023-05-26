@@ -4,6 +4,7 @@ from car_rent.models import Car
 from .cart import Cart
 from .forms import CartAddCarForm
 from django.core.exceptions import PermissionDenied
+from discounts.forms import DiscountApplyForm
 
 
 @require_POST
@@ -43,6 +44,9 @@ def cart_detail(request):
         raise PermissionDenied("No access")
 
     cart = Cart(request)
-    for tmp in cart:
-        print(tmp)
-    return render(request, 'cart/detail.html', {'cart': cart})
+    discount_apply_form = DiscountApplyForm()
+
+    return render(request,
+                  'cart/detail.html',
+                  {'cart': cart,
+                   'discount_apply_form': discount_apply_form})
