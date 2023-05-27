@@ -5,6 +5,7 @@ from cart.cart import Cart
 from car_rent.models import Client
 from .models import Order
 from django.core.exceptions import PermissionDenied
+from discounts.models import Discount
 
 
 def order_create(request):
@@ -13,13 +14,16 @@ def order_create(request):
 
     cart = Cart(request)
     if request.method == 'POST':
-        order = Order.objects.create(client=Client.objects.filter(email=request.user.email).first())
+        order = Order.objects.create(client=Client.objects.filter(email=request.user.email).first(),
+                                     discount=cart.discount,
+                                     discount_percentage=cart.discount.discount)
 
         for item in cart:
             OrderItem.objects.create(order=order,
                                      car=item['car'],
                                      price=item['rent_per_day'],
-                                     quantity=item['quantity'])
+                                     quantity=item['quantity'],
+                                     total_cost=cart.get_total_price_after_discount())
 
         # cleaning cart
         cart.clear()
