@@ -1,4 +1,9 @@
+from django.urls import reverse
+import pytest
 import requests
+import django.test.client
+import django.test.utils
+from django.conf import settings
 
 
 def test_home_page():  # Get the home page
@@ -62,6 +67,18 @@ def test_6():
 
 
 def test_7():
+    url = 'http://127.0.0.1:8000/cart/'
+    response = requests.get(url)
+    assert response.status_code == 403
+
+
+def test_8():
+    url = 'http://127.0.0.1:8000/orders/create/'
+    response = requests.get(url)
+    assert response.status_code == 403
+
+
+def test_9():
     url = 'http://127.0.0.1:8000/edit/3/'
     response = requests.get(url)
     assert response.status_code == 403

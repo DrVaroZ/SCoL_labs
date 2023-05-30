@@ -17,6 +17,8 @@ def order_create(request):
         order = Order.objects.create(client=Client.objects.filter(email=request.user.email).first(),
                                      discount=cart.discount,
                                      discount_percentage=cart.discount.discount)
+        print(Client.objects.all())
+        print(request.user.email)
 
         for item in cart:
             OrderItem.objects.create(order=order,
