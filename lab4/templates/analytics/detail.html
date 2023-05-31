@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Analytics</title>
+    </head>
+    <body>
+        <img src="/media/orders_per_day.png">
+        <p>Mean amount of orders per day: {{ mean_orders_per_day|floatformat:"2" }}</p>
+        <p>Median amount of orders per day: {{ median_orders_per_day|floatformat:"2" }}</p>
+        <p>Min amount of orders per day: {{ min_orders_per_day }}</p>
+        <p>Max amount of orders per day: {{ max_orders_per_day }}</p>
+        <p>Standard deviation of amount of orders per day: {{ std_orders_per_day|floatformat:"2" }}</p>
+        <form action="/" method="get">
+            <button type="submit">Back</button>
+        </form>
+    </body>
+</html>
