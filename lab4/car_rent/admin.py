@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Brand, CarModel, Car, Client, Rent
+from .models import Brand, CarModel, Car, Client, Rent, Advertisement, CompanyPartner, Article
 
 
 @admin.register(Brand)
@@ -37,7 +37,23 @@ class FineAdmin(admin.ModelAdmin):
 
 '''
 
+
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
     list_display = ['first_name', 'last_name', 'date_birthday', 'email', 'phone_number']
-    #list_filter = ['discount', 'fines']
+    # list_filter = ['discount', 'fines']
+
+
+@admin.register(Advertisement)
+class AdvertisementAdmin(admin.ModelAdmin):
+    list_display = ['company_name', 'text', 'image', 'link']
+
+
+@admin.register(CompanyPartner)
+class CompanyPartnerAdmin(admin.ModelAdmin):
+    list_display = ['company_name', 'image', 'link']
+
+
+@admin.register(Article)
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ['date', 'title', 'short', 'image']

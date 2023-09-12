@@ -1,6 +1,6 @@
 import requests
 from django.shortcuts import render, get_object_or_404
-from .models import Car, Brand, CarModel
+from .models import Car, Brand, CarModel, Advertisement, CompanyPartner, Article
 from cart.forms import CartAddCarForm
 from .forms import CarForm
 from django.http import HttpResponseRedirect
@@ -45,7 +45,7 @@ def car_create(request):
     if not request.user.is_staff:
         raise PermissionDenied("No access")
 
-    print(1234567)
+    # print(12345)
 
     form = CarForm()
 
@@ -102,3 +102,54 @@ def car_delete(request, id):
         return HttpResponseRedirect("/")
     except car.DoesNotExist:
         return HttpResponseNotFound("<h2>car not found</h2>")
+
+
+def show_home_page(request):
+    advertisements = Advertisement.objects.all()
+    companies = CompanyPartner.objects.all()
+    article = Article.objects.last()
+    return render(request,
+                  'car_rent/info_pages/home.html',
+                  {'advertisements': advertisements,
+                   'companies': companies,
+                   'article': article})
+
+
+def show_about_company_page(request):
+    return render(request,
+                  'car_rent/info_pages/about_company.html')
+
+
+def show_news_page(request):
+    return render(request,
+                  'car_rent/info_pages/news.html')
+
+
+def show_faq_page(request):
+    return render(request,
+                  'car_rent/info_pages/faq.html')
+
+
+def show_contacts_page(request):
+    return render(request,
+                  'car_rent/info_pages/contacts.html')
+
+
+def show_privacy_policy_page(request):
+    return render(request,
+                  'car_rent/info_pages/privacy_policy.html')
+
+
+def show_vacancies_page(request):
+    return render(request,
+                  'car_rent/info_pages/vacancies.html')
+
+
+def show_reviews_page(request):
+    return render(request,
+                  'car_rent/info_pages/reviews.html')
+
+
+def show_discounts_page(request):
+    return render(request,
+                  'car_rent/info_pages/discounts.html')

@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
     <div class="car-detail">
-        <img src="{% if car.image %}{{ car.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}">
+        <img src="{% if car.image %}{{ car.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}">
         <h1>{{ car.brand }}</h1>
         <h2><a href="{{ car.brand.get_absolute_url }}">{{ car.brand }}</a></h2>
         {{ car.car_model|linebreaks }}
@@ -13,7 +13,7 @@
         <p class="cost">${{ car.cost }}</p>
         <p class="rent_per_day">${{ car.rent_per_day }}</p>
         {%if user.is_authenticated%}
-        <form action="{% url "cart:cart_add" car.id %}" method="post">
+        <form action="{% url 'cart:cart_add' car.id %}" method="post">
             {{ cart_car_form }}
             {% csrf_token %}
             <input type="submit" value="Add to cart">

@@ -14,9 +14,12 @@ def order_create(request):
 
     cart = Cart(request)
     if request.method == 'POST':
-        order = Order.objects.create(client=Client.objects.filter(email=request.user.email).first(),
-                                     discount=cart.discount,
-                                     discount_percentage=cart.discount.discount)
+        if cart.discount is not None:
+            order = Order.objects.create(client=Client.objects.filter(email=request.user.email).first(),
+                                         discount=cart.discount,
+                                         discount_percentage=cart.discount.discount)
+        else:
+            order = Order.objects.create(client=Client.objects.filter(email=request.user.email).first())
         print(Client.objects.all())
         print(request.user.email)
 

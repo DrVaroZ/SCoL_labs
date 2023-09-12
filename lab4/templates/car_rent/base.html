@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8"/>
     <title>{% block title %}My car_rent{% endblock %}</title>
-    <link href="{% static "base.css" %}" rel="stylesheet">
+    <link href="{% static 'base.css' %}" rel="stylesheet">
 </head>
 <body>
 <div id="header">
@@ -50,7 +50,7 @@
         {% with total_items=cart|length %}
             {% if cart|length > 0 %}
                 Your cart:
-                <a href="{% url "cart:cart_detail" %}">
+                <a href="{% url 'cart:cart_detail' %}">
                     {{ total_items }} item{{ total_items|pluralize }},
                     ${{ cart.get_total_price }}
                 </a>
@@ -73,4 +73,15 @@
     {% endblock %}
 </div>
 </body>
+<tail>
+    <a href = "{% url 'car_rent:home' %}" > home </a>
+    <a href = "{% url 'car_rent:about_company' %}" > about company </a>
+    <a href = "{% url 'car_rent:news' %}" > news </a>
+    <a href = "{% url 'car_rent:faq' %}" > FAQ </a>
+    <a href = "{% url 'car_rent:contacts' %}" > Contacts </a>
+    <a href = "{% url 'car_rent:privacy_policy' %}" > Privacy Policy </a>
+    <a href = "{% url 'car_rent:vacancies' %}" > Vacancies </a>
+    <a href = "{% url 'car_rent:reviews' %}" > Reviews </a>
+    <a href = "{% url 'car_rent:discounts' %}" > Discounts </a>
+</tail>
 </html>

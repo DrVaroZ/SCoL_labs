@@ -8,7 +8,7 @@
         <h3>Cars</h3>
         <ul>
             <li {% if not brand %}class="selected"{% endif %}>
-                <a href="{% url "car_rent:car_list" %}">All</a>
+                <a href="{% url 'car_rent:car_list' %}">All</a>
             </li>
             {% for c in brands %}
                 <li {% if brand.name == c.name %}class="selected" {% endif %}>
@@ -33,7 +33,7 @@
         {% for car in cars %}
             <div class="item">
                 <a href="{{ car.get_absolute_url }}">
-                    <img src="{% if car.image %}{{ car.image.url }}{% else %}{% static "media/no_image.png" %}{% endif %}">
+                    <img src="{% if car.image %}{{ car.image.url }}{% else %}{% static 'media/no_image.png' %}{% endif %}">
                 </a>
                 <a href="{{ car.get_absolute_url }}">{{ car.brand }}</a><br>
                 {{ car.brand }} {{ car.car_model }}

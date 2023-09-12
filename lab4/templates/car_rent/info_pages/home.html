@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h3>Advertisement</h3>
+    {% for ad in advertisements %}
+            <div class="item">
+                <img src="{% if ad.image %}{{ ad.image.url }}{% endif %}"> <br>
+                <a href="{{ ad.link }}">{{ ad.company_name }}</a><br>
+                <!-- {{ ad.company_name }} <br> -->
+                {{ ad.text }}
+            </div>
+    {% endfor %}
+    <h3>Companies-Partners</h3>
+    {% for company in companies %}
+            <div class="item">
+                <img src="{% if company.image %}{{ company.image.url }}{% endif %}"> <br>
+                <a href="{{ company.link }}">{{ company.company_name }}</a><br>
+            </div>
+    {% endfor %}
+    <h3>The last article</h3>
+    <div class="item">
+        {{ article.title }} <br>
+        {{ article.date }} <br>
+        {{ article.short }} <br>
+        <img src="{% if article.image %}{{ article.image.url }}{% endif %}"> <br>
+    </div>
+</body>
+</html>

@@ -138,6 +138,26 @@ class Rent(models.Model):
         return '{0}'.format(self.id)
 
 
+class Advertisement(models.Model):
+    image = models.ImageField(upload_to='car/%Y/%m/%d', blank=True)
+    link = models.CharField(max_length=100)
+    text = models.CharField(max_length=100)
+    company_name = models.CharField(max_length=100)
+
+
+class CompanyPartner(models.Model):
+    image = models.ImageField(upload_to='car/%Y/%m/%d', blank=True)
+    link = models.CharField(max_length=100)
+    company_name = models.CharField(max_length=100)
+
+
+class Article(models.Model):
+    date = models.DateField()
+    title = models.CharField(max_length=100)
+    short = models.TextField()
+    image = models.ImageField(upload_to='car/%Y/%m/%d', blank=True)
+
+
 '''
 class Car(models.Model):
     """
