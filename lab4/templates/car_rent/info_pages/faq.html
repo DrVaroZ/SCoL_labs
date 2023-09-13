@@ -5,6 +5,11 @@
     <title>FAQ</title>
 </head>
 <body>
-
+    {% for faq in questions %}
+        <details>
+            <summary> <strong>{{faq.question}}</strong> {{ faq.date }} </summary>
+            <p>{{faq.answer}}</p>
+        </details>
+    {% endfor %}
 </body>
 </html>

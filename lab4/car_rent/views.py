@@ -1,6 +1,9 @@
+import re
+from docx import Document
 import requests
 from django.shortcuts import render, get_object_or_404
-from .models import Car, Brand, CarModel, Advertisement, CompanyPartner, Article
+from .models import (Car, Brand, CarModel, Advertisement, CompanyPartner, Article,
+                     Company, NewsArticle, Question, Worker)
 from cart.forms import CartAddCarForm
 from .forms import CarForm
 from django.http import HttpResponseRedirect
@@ -116,28 +119,42 @@ def show_home_page(request):
 
 
 def show_about_company_page(request):
+    company_info = Company.objects.last()
     return render(request,
-                  'car_rent/info_pages/about_company.html')
+                  'car_rent/info_pages/about_company.html',
+                  {'company_info': company_info})
 
 
 def show_news_page(request):
+    news = NewsArticle.objects.all()
     return render(request,
-                  'car_rent/info_pages/news.html')
+                  'car_rent/info_pages/news.html',
+                  {'news': news})
 
 
 def show_faq_page(request):
+    questions = Question.objects.all()
     return render(request,
-                  'car_rent/info_pages/faq.html')
+                  'car_rent/info_pages/faq.html',
+                  {'questions': questions})
 
 
 def show_contacts_page(request):
+    workers = Worker.objects.all()
     return render(request,
-                  'car_rent/info_pages/contacts.html')
+                  'car_rent/info_pages/contacts.html',
+                  {'workers': workers})
 
 
 def show_privacy_policy_page(request):
+    doc = Document("../lab4/media/privacy_policy.docx")
+    html_code = ""
+    for paragraph in doc.paragraphs:
+        paragraph_html = paragraph.text.replace('\n', '<br>')
+        html_code += f"<p>{paragraph_html}</p>"
     return render(request,
-                  'car_rent/info_pages/privacy_policy.html')
+                  'car_rent/info_pages/privacy_policy.html',
+                  {'privacy': html_code})
 
 
 def show_vacancies_page(request):

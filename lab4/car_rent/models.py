@@ -1,6 +1,7 @@
 from django.core.validators import MinLengthValidator, MaxLengthValidator
 from django.db import models
 from django.urls import reverse
+import datetime
 
 
 class Brand(models.Model):
@@ -155,6 +156,37 @@ class Article(models.Model):
     date = models.DateField()
     title = models.CharField(max_length=100)
     short = models.TextField()
+    image = models.ImageField(upload_to='car/%Y/%m/%d', blank=True)
+
+
+class Company(models.Model):
+    info = models.TextField()
+    company_name = models.CharField(max_length=100)
+    logo = models.ImageField(upload_to='car/%Y/%m/%d', blank=True)
+    video_link = models.CharField(max_length=100)
+    certificate = models.TextField()
+    requisites = models.TextField()
+    company_history = models.TextField()
+
+
+class NewsArticle(models.Model):
+    title = models.CharField(max_length=100)
+    short = models.TextField()
+    image = models.ImageField(upload_to='car/%Y/%m/%d', blank=True)
+    full_link = models.CharField(max_length=100)
+
+
+class Question(models.Model):
+    question = models.TextField()
+    answer = models.TextField()
+    date = models.DateTimeField("Date", auto_now_add=True)
+
+
+class Worker(models.Model):
+    name = models.CharField(max_length=100)
+    work_info = models.TextField()
+    phone_number = models.CharField(max_length=20, help_text='Enter your phone number')
+    email = models.EmailField(help_text='Enter your email')
     image = models.ImageField(upload_to='car/%Y/%m/%d', blank=True)
 
 

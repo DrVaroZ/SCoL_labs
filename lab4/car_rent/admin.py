@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Brand, CarModel, Car, Client, Rent, Advertisement, CompanyPartner, Article
+from .models import (Brand, CarModel, Car, Client, Rent, Advertisement,
+                     CompanyPartner, Article, Company, NewsArticle, Question,
+                     Worker)
 
 
 @admin.register(Brand)
@@ -57,3 +59,24 @@ class CompanyPartnerAdmin(admin.ModelAdmin):
 @admin.register(Article)
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ['date', 'title', 'short', 'image']
+
+
+@admin.register(Company)
+class CompanyAdmin(admin.ModelAdmin):
+    list_display = ['company_name', 'info', 'logo', 'video_link',
+                    'certificate', 'requisites', 'company_history']
+
+
+@admin.register(NewsArticle)
+class NewsArticleAdmin(admin.ModelAdmin):
+    list_display = ['title', 'short', 'image', 'full_link']
+
+
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ['date', 'question', 'answer']
+
+
+@admin.register(Worker)
+class WorkerAdmin(admin.ModelAdmin):
+    list_display = ['name', 'image', 'phone_number', 'email', 'work_info']

@@ -5,6 +5,16 @@
     <title>Contacts</title>
 </head>
 <body>
-
+    {% for worker in workers %}
+            <div class="item">
+                <details>
+                    <summary><strong>{{worker.name}}</strong></summary>
+                    <p>{{worker.phone_number}}</p>
+                    <p>{{worker.email}}</p>
+                </details> <br>
+                <img src="{% if worker.image %}{{ worker.image.url }}{% endif %}"> <br>
+                {{ worker.work_info }} <br>
+            </div>
+    {% endfor %}
 </body>
 </html>

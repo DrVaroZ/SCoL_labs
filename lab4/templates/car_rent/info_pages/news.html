@@ -5,6 +5,13 @@
     <title>News</title>
 </head>
 <body>
-
+    {% for article in news %}
+            <div class="item">
+                <strong>{{ article.title }} </strong> <br>
+                <img src="{% if article.image %}{{ article.image.url }}{% endif %}"> <br>
+                {{ article.short }} <br>
+                <a href="{{ article.full_link }}">{{ "read more" }}</a><br>
+            </div>
+    {% endfor %}
 </body>
 </html>
