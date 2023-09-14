@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (Brand, CarModel, Car, Client, Rent, Advertisement,
                      CompanyPartner, Article, Company, NewsArticle, Question,
-                     Worker)
+                     Worker, Vacancy)
 
 
 @admin.register(Brand)
@@ -80,3 +80,8 @@ class QuestionAdmin(admin.ModelAdmin):
 @admin.register(Worker)
 class WorkerAdmin(admin.ModelAdmin):
     list_display = ['name', 'image', 'phone_number', 'email', 'work_info']
+
+
+@admin.register(Vacancy)
+class VacancyAdmin(admin.ModelAdmin):
+    list_display = ['position', 'position_info', 'salary']

@@ -5,6 +5,13 @@
     <title>Vacancies</title>
 </head>
 <body>
-
+    {% for vacancy in vacancies %}
+            <div class="item">
+                <details>
+                    <summary><strong>{{ vacancy.position }} {{ vacancy.salary }} <span>&#36;</span> </strong></summary>
+                    <p>{{ vacancy.position_info }}</p>
+                </details> <br>
+            </div>
+    {% endfor %}
 </body>
 </html>

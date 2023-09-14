@@ -190,6 +190,12 @@ class Worker(models.Model):
     image = models.ImageField(upload_to='car/%Y/%m/%d', blank=True)
 
 
+class Vacancy(models.Model):
+    position = models.CharField(max_length=100)
+    position_info = models.TextField()
+    salary = models.IntegerField()
+
+
 '''
 class Car(models.Model):
     """

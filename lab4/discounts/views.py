@@ -12,10 +12,12 @@ def discount_apply(request):
     if form.is_valid():
         code = form.cleaned_data['code']
 
-        all_discounts = Discount.objects.all()
         codes_all = []
+        all_discounts = Discount.objects.all()
+        #all_discounts = Discount.objects.filter(valid_to__gte=now()).update(active=False)
         for disc in all_discounts:
-            codes_all.append(disc.code)
+            if disc.active:
+                codes_all.append(disc.code)
 
         if code not in codes_all:
             code = 'no_discount'

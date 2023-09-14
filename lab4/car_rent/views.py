@@ -3,7 +3,8 @@ from docx import Document
 import requests
 from django.shortcuts import render, get_object_or_404
 from .models import (Car, Brand, CarModel, Advertisement, CompanyPartner, Article,
-                     Company, NewsArticle, Question, Worker)
+                     Company, NewsArticle, Question, Worker, Vacancy)
+from discounts.models import Discount
 from cart.forms import CartAddCarForm
 from .forms import CarForm
 from django.http import HttpResponseRedirect
@@ -158,8 +159,10 @@ def show_privacy_policy_page(request):
 
 
 def show_vacancies_page(request):
+    vacancies = Vacancy.objects.all()
     return render(request,
-                  'car_rent/info_pages/vacancies.html')
+                  'car_rent/info_pages/vacancies.html',
+                  {'vacancies': vacancies})
 
 
 def show_reviews_page(request):
@@ -168,5 +171,9 @@ def show_reviews_page(request):
 
 
 def show_discounts_page(request):
+    active_discounts = Discount.objects.filter(active=True)
+    expired_discounts = Discount.objects.filter(active=False)
     return render(request,
-                  'car_rent/info_pages/discounts.html')
+                  'car_rent/info_pages/discounts.html',
+                  {'active_discounts': active_discounts,
+                   'expired_discounts': expired_discounts})
