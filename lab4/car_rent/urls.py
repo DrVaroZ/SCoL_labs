@@ -17,6 +17,7 @@ urlpatterns = [
     path("privacy_policy/", views.show_privacy_policy_page, name='privacy_policy'),
     path("vacancies/", views.show_vacancies_page, name='vacancies'),
     path("reviews/", views.show_reviews_page, name='reviews'),
+    path('reviews/create/', views.create_review),
     path("discounts/", views.show_discounts_page, name='discounts'),
     path('<str:car_brand>/', views.car_list,
          name='car_list_by_brand'

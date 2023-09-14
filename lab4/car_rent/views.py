@@ -2,14 +2,17 @@ import re
 from docx import Document
 import requests
 from django.shortcuts import render, get_object_or_404
+
+from login.models import CustomUser
 from .models import (Car, Brand, CarModel, Advertisement, CompanyPartner, Article,
-                     Company, NewsArticle, Question, Worker, Vacancy)
+                     Company, NewsArticle, Question, Worker, Vacancy, Review)
 from discounts.models import Discount
 from cart.forms import CartAddCarForm
-from .forms import CarForm
+from .forms import CarForm, ReviewForm
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
 from django.core.exceptions import PermissionDenied
+from datetime import date
 
 
 def car_list(request, car_brand=None):
@@ -165,9 +168,33 @@ def show_vacancies_page(request):
                   {'vacancies': vacancies})
 
 
+def create_review(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect("/auth/login/")
+
+    form = ReviewForm()
+
+    for obj in CustomUser.objects.all():
+        print(obj.id)
+
+    if request.method == "POST":
+        print('id', request.user.id)
+        review = Review.objects.create(date=date.today().strftime('%Y-%m-%d'),
+                                       author=CustomUser.objects.get(id=request.user.id),
+                                       mark=request.POST.get('mark'),
+                                       text=request.POST.get('text'))
+
+        review.save()
+    else:
+        return render(request, "car_rent/info_pages/review_create.html", {"form": form})
+    return HttpResponseRedirect("/")
+
+
 def show_reviews_page(request):
+    reviews = Review.objects.all()
     return render(request,
-                  'car_rent/info_pages/reviews.html')
+                  'car_rent/info_pages/reviews.html',
+                  {'reviews': reviews})
 
 
 def show_discounts_page(request):

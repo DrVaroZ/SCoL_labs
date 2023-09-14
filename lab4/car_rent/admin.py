@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (Brand, CarModel, Car, Client, Rent, Advertisement,
                      CompanyPartner, Article, Company, NewsArticle, Question,
-                     Worker, Vacancy)
+                     Worker, Vacancy, Review)
 
 
 @admin.register(Brand)
@@ -85,3 +85,8 @@ class WorkerAdmin(admin.ModelAdmin):
 @admin.register(Vacancy)
 class VacancyAdmin(admin.ModelAdmin):
     list_display = ['position', 'position_info', 'salary']
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ['date', 'author', 'mark', 'text']

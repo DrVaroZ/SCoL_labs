@@ -1,7 +1,9 @@
-from django.core.validators import MinLengthValidator, MaxLengthValidator
+from django.core.validators import MinLengthValidator, MaxLengthValidator, MinValueValidator, MaxValueValidator
 from django.db import models
 from django.urls import reverse
 import datetime
+
+from login.models import CustomUser
 
 
 class Brand(models.Model):
@@ -195,6 +197,12 @@ class Vacancy(models.Model):
     position_info = models.TextField()
     salary = models.IntegerField()
 
+
+class Review(models.Model):
+    date = models.DateField()
+    text = models.TextField()
+    mark = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], default=5)
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
 
 '''
 class Car(models.Model):

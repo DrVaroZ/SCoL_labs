@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Reviews</title>
-</head>
-<body>
+{% extends "car_rent/base.html" %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+Reviews
+{% endblock %}
+{% block extra_head %}
+<meta
+    name="description"
+    content="Page with reviews" />
+<meta name="keywords" content="Car, car_rent, rent, review, reviews">
+<meta name="author" content="Vadim Zhur">
+{% endblock %}
+{% block content %}
+
+<footer>
+    <h1 align="center">Reviews</h1>
+</footer>
+<section itemscope itemtype="https://schema.org/Review">
+    {% for review in reviews %}
+        <h2 itemprop="author">{{review.author.first_name}}</h2>
+        <p itemprop="reviewBody">{{review.text}}</p>
+        <p itemprop="reviewRating"> {{ review.mark }}</p>
+        <p itemprop="datePublished">{{review.date}}</p>
+        <hr/>
+    {% endfor %}
+    <a href="create/">Create review</a>
+</section>
+
+{% endblock %}
