@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="Page with about company information"/>
+    <meta name="author" content="Vadim Zhur"/>
     <meta charset="UTF-8">
     <title>About company</title>
 </head>
 <body>
-    <div class="item">
+    <section class="item">
         {{ company_info.company_name }} <br>
         {{ company.info }} <br>
         <img src="{% if company_info.logo %}{{ company_info.logo.url }}{% endif %}"> <br>
@@ -15,6 +17,6 @@
         {{ company_info.company_history }} <br>
         {{ company_info.certificate }} <br>
         {{ company_info.requisites }} <br>
-    </div>
+    </section>
 </body>
 </html>

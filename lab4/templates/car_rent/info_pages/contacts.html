@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="Page with contacts"/>
+    <meta name="author" content="Vadim Zhur"/>
     <meta charset="UTF-8">
     <title>Contacts</title>
 </head>
 <body>
     {% for worker in workers %}
-            <div class="item">
+            <section class="item">
                 <details>
                     <summary><strong>{{worker.name}}</strong></summary>
                     <p>{{worker.phone_number}}</p>
@@ -14,7 +16,7 @@
                 </details> <br>
                 <img src="{% if worker.image %}{{ worker.image.url }}{% endif %}"> <br>
                 {{ worker.work_info }} <br>
-            </div>
+            </section>
     {% endfor %}
 </body>
 </html>

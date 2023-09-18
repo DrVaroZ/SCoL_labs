@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="Page with news" />
+    <meta name="author" content="Vadim Zhur">
     <meta charset="UTF-8">
     <title>News</title>
 </head>
 <body>
     {% for article in news %}
-            <div class="item">
+            <section class="item">
                 <strong>{{ article.title }} </strong> <br>
                 <img src="{% if article.image %}{{ article.image.url }}{% endif %}"> <br>
                 {{ article.short }} <br>
                 <a href="{{ article.full_link }}">{{ "read more" }}</a><br>
-            </div>
+            </section>
     {% endfor %}
 </body>
 </html>

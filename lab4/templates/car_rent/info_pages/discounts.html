@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="Page with discounts"/>
+    <meta name="author" content="Vadim Zhur"/>
     <meta charset="UTF-8">
     <title>Discounts</title>
 </head>
 <body>
     <h3>Active discounts</h3>
     {% for active_discount in active_discounts %}
-            <div class="item">
+            <section class="item">
                 <strong>{{ active_discount.code }}</strong> <br>
                 {{ active_discount.valid_from }} {{ active_discount.valid_to }} <br>
                 {{ active_discount.discount }} <span>&#37;</span> <br>
-            </div>
+            </section>
     {% endfor %}
 
     <h3>Expired discounts</h3>
     {% for expired_discount in expired_discounts %}
-            <div class="item">
+            <section class="item">
                 <strong>{{ expired_discount.code }}</strong> <br>
                 {{ expired_discount.valid_from }} {{ expired_discount.valid_to }} <br>
                 {{ expired_discount.discount }} <span>&#37;</span> <br>
-            </div>
+            </section>
     {% endfor %}
 </body>
 </html>
