@@ -204,3 +204,8 @@ def show_discounts_page(request):
                   'car_rent/info_pages/discounts.html',
                   {'active_discounts': active_discounts,
                    'expired_discounts': expired_discounts})
+
+
+def show_experiments_page(request):
+    return render(request,
+                  'car_rent/info_pages/experiments.html')

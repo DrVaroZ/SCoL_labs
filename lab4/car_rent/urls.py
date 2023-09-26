@@ -19,6 +19,7 @@ urlpatterns = [
     path("reviews/", views.show_reviews_page, name='reviews'),
     path('reviews/create/', views.create_review),
     path("discounts/", views.show_discounts_page, name='discounts'),
+    path("experiments/", views.show_experiments_page, name='experiments'),
     path('<str:car_brand>/', views.car_list,
          name='car_list_by_brand'
          ),
