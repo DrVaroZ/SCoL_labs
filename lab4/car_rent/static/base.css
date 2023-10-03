@@ -328,3 +328,10 @@ form div.field {
     color:#666;
     border-radius:4px;
 }
+
+.navigation-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}

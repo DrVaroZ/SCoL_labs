@@ -1,22 +1,47 @@
 <!DOCTYPE html>
+{% extends "car_rent/base.html" %}
+{% load static %}
 <html lang="en">
-<head>
+{% block head %}
     <meta name="description" content="Page with about company information"/>
     <meta name="author" content="Vadim Zhur"/>
     <meta charset="UTF-8">
-    <title>About company</title>
-</head>
-<body>
-    <section class="item">
-        {{ company_info.company_name }} <br>
-        {{ company.info }} <br>
-        <img src="{% if company_info.logo %}{{ company_info.logo.url }}{% endif %}"> <br>
-        <iframe width="420" height="315"
-            src="https://www.youtube.com/embed/tgbNymZ7vqY">
+    <title>{% block title %}About company{% endblock %}</title>
+    <link href="{% static 'base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'about_company.css' %}" />
+{% endblock %}
+{% block content %}
+<section class="company_info">
+        <section class="company_name">
+            <strong> {{ company_info.company_name }} </strong> <br>
+        </section>
+        <article class="info">
+            {{ company_info.info }} <br>
+        </article>
+        <section class="logo">
+            <img src="{% if company_info.logo %}{{ company_info.logo.url }}{% endif %}" class="animated-logo"> <br>
+        </section>
+        <section class="video-wrapper">
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
         </iframe> <br>
+        </section>
+        <hr>
         {{ company_info.company_history }} <br>
-        {{ company_info.certificate }} <br>
-        {{ company_info.requisites }} <br>
-    </section>
-</body>
+        <hr>
+        <section class="certificate">
+            {{ company_info.certificate }} <br>
+            <p>ООО «Приносим радость»</p>
+            <p>Юридический адрес: 220073, Республика Беларусь, г. Минск, ул. Скрыганова, д. 14, каб. 36</p>
+            <p>УНП 193067319</p>
+            <p>Адрес для почтовых отправлений: 220117, а/я 162.</p>
+            <p>Свидетельство о государственной регистрации №193067319 от 19 апреля 2018 г. выдано Минским горисполкомом</p>
+            <p>Зарегистрировано Министерством информации Республики Беларусь 11 мая 2018 г. в Государственном реестре издателей, изготовителей и распространителей печатных изданий Республики Беларусь в качестве распространителя печатных изданий за №3/1656</p>
+            <p>Зарегистрирован в Торговом реестре Республики Беларусь 31 мая 2018 г. за №416870</p>
+        </section>
+        <hr>
+        <section class="requisites">
+            {{ company_info.requisites }} <br>
+        </section>
+</section>
+{% endblock %}
 </html>

@@ -17,6 +17,8 @@
     <li><a href="#datetime-example">Datetime example</a></li>
     <li><a href="#table-example">Table example</a></li>
     <li><a href="#audio-example">Audio example</a></li>
+    <li><a href="#form-elements">Form elements example</a></li>
+    <li><a href="#fonts-example">Fonts example</a></li>
 </ul>
 <hr>
 <h3 id="list-example"> List example </h3>
@@ -27,9 +29,9 @@
 </ol>
 <hr>
 <h3 id="code-example"> Code example </h3>
-<figure>
-  <pre>
-function NavigatorExample() {
+<pre>
+    <code>
+        function NavigatorExample() {
   var txt;
   txt = "Browser CodeName: " + navigator.appCodeName + "; ";
   txt+= "Browser Name: " + navigator.appName + "; ";
@@ -39,8 +41,8 @@ function NavigatorExample() {
   txt+= "User-agent header: " + navigator.userAgent  + "; ";
   console.log("NavigatorExample", txt);
 }
+    </code>
   </pre>
-</figure>
 <hr>
 <h3 id="quote-example"> Quote example </h3>
 <figure>
@@ -262,8 +264,7 @@ function NavigatorExample() {
     <th>Language</th>
   </tr>
   <tr>
-    <td>USA</td>
-    <td>Washington, D.C.</td>
+    <td colspan="2">USA Washington, D.C.</td>
     <td>309 million</td>
     <td>English</td>
   </tr>
@@ -285,5 +286,72 @@ function NavigatorExample() {
 <audio controls>
   <source src="https://www.computerhope.com/jargon/m/example.mp3" />
 </audio>
+<hr>
+<h3 id="form-elements"> Form elements</h3>
+<form>
+        <!-- Text Input -->
+        <section >
+            <label for="textInput">Текстовое поле:</label>
+            <input tabindex="-1" type="text" id="textInput" name="textInput" required>
+        </section>
+
+        <!-- Email Input -->
+        <section>
+            <label for="emailInput">Электронная почта:</label>
+            <input tabindex="-1" type="email" id="emailInput" name="emailInput" required>
+        </section>
+
+        <!-- Password Input -->
+        <section tabindex="-1">
+            <label for="passwordInput">Пароль:</label>
+            <input tabindex="-1" type="password" id="passwordInput" name="passwordInput" required>
+        </section>
+
+        <!-- Checkbox -->
+        <section>
+            <input type="checkbox" id="checkboxInput" name="checkboxInput">
+            <label  for="checkboxInput">Галочка</label>
+        </section>
+
+        <!-- Radio Buttons -->
+        <section>
+            <input type="radio" id="radioInput1" name="radioGroup" value="option1" required>
+            <label for="radioInput1">Опция 1</label>
+            <input type="radio" id="radioInput2" name="radioGroup" value="option2" required>
+            <label for="radioInput2">Опция 2</label>
+        </section>
+
+        <!-- Select Dropdown -->
+        <section>
+            <label for="selectInput">Выпадающий список:</label>
+            <select id="selectInput" name="selectInput" required>
+                <option value="">Выберите...</option>
+                <option value="option1">Опция 1</option>
+                <option value="option2">Опция 2</option>
+            </select>
+        </section>
+
+        <!-- Submit Button -->
+        <button type="submit">Отправить</button>
+    </form>
+<hr>
+<section>
+        <h3 id="fonts-example">Различные шрифты</h3>
+        <ul>
+            <li><i>курсив</i> - иностранные слова, технические термины</li>
+            <li><small>шрифт на 1 меньше стандартного</small> - «мелкий шрифт» (оговорки, уточнения)</li>
+            <li><strong>жирный акцент</strong> - важность текста</li>
+            <li><b>жирный шрифт</b> - привлечение внимания (ключевые слова)</li>
+            <li><em>акцентирование курсивом</em> - логическое ударение</li>
+            <li><s>зачеркнутый текст</s> - неточное или неактуальное содержимое</li>
+            <li><u>подчеркивание</u> - В HTML5 объявлен устаревшим</li>
+            <li><sup>нижний (верхний) индекс</sup></li>
+            <li><sub>нижний (верхний) индекс</sub></li>
+        </ul>
+    </section>
+<hr>
+<section hidden>
+    <p>Hidden information</p>
+</section>
 </body>
 </html>

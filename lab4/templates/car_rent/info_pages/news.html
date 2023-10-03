@@ -1,19 +1,25 @@
 <!DOCTYPE html>
+{% extends "car_rent/base.html" %}
+{% load static %}
 <html lang="en">
-<head>
+{% block head %}
     <meta name="description" content="Page with news" />
     <meta name="author" content="Vadim Zhur">
     <meta charset="UTF-8">
-    <title>News</title>
-</head>
-<body>
-    {% for article in news %}
-            <section class="item">
+    <title>{% block title %}News{% endblock %}</title>
+    <link href="{% static 'base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'news.css' %}" />
+{% endblock %}
+{% block content %}
+    <section class="news-list">
+        {% for article in news %}
+            <article class="article">
                 <strong>{{ article.title }} </strong> <br>
                 <img src="{% if article.image %}{{ article.image.url }}{% endif %}"> <br>
-                {{ article.short }} <br>
-                <a href="{{ article.full_link }}">{{ "read more" }}</a><br>
-            </section>
-    {% endfor %}
-</body>
+                <p class="short-description"> {{ article.short }} </p> <br>
+                <a class="read-full" href="{{ article.full_link }}">{{ "read more" }}</a><br>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}
 </html>

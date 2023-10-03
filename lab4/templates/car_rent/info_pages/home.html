@@ -1,13 +1,17 @@
 <!DOCTYPE html>
+{% extends "car_rent/base.html" %}
+{% load static %}
 <html lang="en">
-<head>
+{% block head %}
     <meta name="description" content="Page with home information"/>
     <meta name="author" content="Vadim Zhur"/>
     <meta charset="UTF-8">
-    <title>Home</title>
-</head>
-<body>
-    <h3>Advertisement</h3>
+    <title>{% block title %}Home{% endblock %}</title>
+    <link href="{% static 'base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'home.css' %}" />
+{% endblock %}
+{% block content %}
+<h3>Advertisement</h3>
     {% for ad in advertisements %}
             <section class="item">
                 <img src="{% if ad.image %}{{ ad.image.url }}{% endif %}"> <br>
@@ -18,17 +22,21 @@
     {% endfor %}
     <h3>Companies-Partners</h3>
     {% for company in companies %}
-            <section class="item">
-                <img src="{% if company.image %}{{ company.image.url }}{% endif %}"> <br>
-                <a href="{{ company.link }}">{{ company.company_name }}</a><br>
+            <section class="company">
+                <section class="image">
+                    <img src="{% if company.image %}{{ company.image.url }}{% endif %}"> <br>
+                </section>
+                <section class="link">
+                    <a href="{{ company.link }}">{{ company.company_name }}</a><br>
+                </section>
             </section>
     {% endfor %}
     <h3>The last article</h3>
-    <section class="item">
+    <section class="article">
         {{ article.title }} <br>
         {{ article.date }} <br>
         {{ article.short }} <br>
         <img src="{% if article.image %}{{ article.image.url }}{% endif %}"> <br>
     </section>
-</body>
+{% endblock %}
 </html>

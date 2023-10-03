@@ -1,21 +1,23 @@
 <!DOCTYPE html>
+{% extends "car_rent/base.html" %}
+{% load static %}
 <html lang="en">
-<head>
+{% block head %}
     <meta name="description" content="Page with FAQ"/>
     <meta name="author" content="Vadim Zhur"/>
     <meta charset="UTF-8">
-    <title>FAQ</title>
-</head>
-<body>
+    <title>{% block title %}FAQ{% endblock %}</title>
+    <link href="{% static 'base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'faq.css' %}" />
+{% endblock %}
+{% block content %}
     {% for faq in questions %}
+    <section class="question">
         <details>
             <summary> <strong>{{faq.question}}</strong> {{ faq.date }} </summary>
             <p>{{faq.answer}}</p>
         </details>
+    </section>
     {% endfor %}
-
-<section hidden>
-    <p>Hidden information</p>
-</section>
-</body>
+{% endblock %}
 </html>

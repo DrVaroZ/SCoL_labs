@@ -1,0 +1,66 @@
+h3 {
+  color: black;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0ffff;
+    margin: 0;
+    padding: 0;
+}
+
+.company {
+    position: relative;
+    width: 300px; /* Adjust the width and height to make the circles larger */
+    height: 300px;
+    border-radius: 50%;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 250, 1.6);
+    margin-bottom: 20px; /* Adjust spacing between circles */
+    background-color: orange
+}
+
+.image {
+    width: 100%; /* Make the image fill the container */
+    height: auto; /* Maintain the aspect ratio */
+    display: block;
+    text-align: center;
+    margin: 0 auto; /* Center the image horizontally */
+    border-radius: 50%;
+    animation: rotateIn 3s infinite alternate;
+}
+
+@keyframes rotateIn {
+    0% {
+        transform: rotate(-15deg);
+    }
+    100% {
+        transform: rotate(15deg);
+    }
+}
+
+.link {
+    position: absolute;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8); /* Add a semi-transparent background */
+    margin: 0;
+    padding: 15px;
+    text-align: center;
+    display: block; /* Make the links display as blocks */
+    text-decoration: none; /* Remove default link styles */
+    color: #333; /* Set link color */
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.article {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
