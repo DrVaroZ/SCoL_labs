@@ -1,6 +1,7 @@
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
+    background-color: #f0ffff;
 }
 
 .news-list {
@@ -15,6 +16,8 @@ article {
     margin: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    background-color: #D6EAFF;
+    border-radius: 5px;
 }
 
 img {
@@ -44,6 +47,6 @@ h2 {
     margin-top: 10px;
     text-align: right;
     text-decoration: none;
-    color: #3498db;
+    color: #FF7F1C;
     font-weight: bold;
 }

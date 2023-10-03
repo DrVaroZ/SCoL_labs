@@ -1,20 +1,29 @@
+body {
+    background-color: #f0ffff;
+}
+
 .question {
-    background-color: #3498db;
+    background-color: #FF7F1C;
     color: #fff;
-    padding: 15px;
+    padding: 20px;
+    margin: 10px;
     cursor: pointer;
     display: flex;
     margin-bottom: 20px;
     justify-content: space-between;
     align-items: center;
+    border-radius: 10px;
 }
 
 summary {
     font-size: 16px;
-    background-color: orange
+    background-color: #6F93F4;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 details {
-    background-color: red;
-    border: 1px solid #ddd;
+    font-size: 16px;
+    background-color: #6F93F4;
+    border-radius: 10px;
 }

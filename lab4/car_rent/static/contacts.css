@@ -1,0 +1,49 @@
+body {
+    background-color: #f0ffff;
+}
+
+.workers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+article {
+    width: 300px;
+    margin: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.worker {
+    padding: 15px;
+}
+
+summary {
+    background-color: #93C1EA;
+    margin: 0px;
+    border: 1px solid black;
+    padding: 5px;
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+details {
+    background-color: #ABFCC1;
+    font-family: 'Pacifico', cursive;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.worker-info {
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+    letter-spacing: 1px;
+}

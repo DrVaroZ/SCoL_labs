@@ -1,16 +1,20 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
         <meta name="description" content="Page for creating reviews"/>
         <meta name="author" content="Vadim Zhur"/>
         <meta charset="utf-8" />
         <title>Create review</title>
+        <link rel="stylesheet" href="{% static 'review_create.css' %}" />
     </head>
     <body>
-        <form method="POST" enctype="multipart/form-data">
-            {{ form.as_p }}
-            <input type="submit" value="Save" >
-        </form>
-        <input type="button" value="back" onclick="history.back()"/>
+        <section class="create-review">
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.as_p }}
+                <input type="submit" value="save" class="create-review-button">
+            </form>
+            <input type="button" value="back" onclick="history.back()" class="back-button"/>
+        </section>
     </body>
 </html>

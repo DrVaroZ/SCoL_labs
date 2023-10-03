@@ -1,0 +1,44 @@
+body {
+    background-color: #f0ffff;
+}
+
+h3 {
+    font-family: 'Pacifico', cursive;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.active-disc-list {
+    list-style: inside;
+    padding: 0;
+}
+
+.expired-disc-list {
+    list-style: inside;
+    padding: 0;
+}
+
+.active-disc {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #dff0d8; /* Зеленый фон */
+    color: #3c763d; /* Темно-зеленый текст */
+    font-family: 'Pacifico', cursive;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.expired-disc {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f2dede; /* Красный фон */
+    color: #a94442; /* Темно-красный текст */
+    font-family: 'Pacifico', cursive;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+

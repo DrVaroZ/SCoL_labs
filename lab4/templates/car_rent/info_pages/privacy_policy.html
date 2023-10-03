@@ -1,15 +1,19 @@
 <!DOCTYPE html>
+{% extends "car_rent/base.html" %}
+{% load static %}
 <html lang="en">
-<head>
+{% block head %}
     <meta name="description" content="Page with privacy policy"/>
     <meta name="author" content="Vadim Zhur"/>
     <meta charset="UTF-8">
-    <title>Privacy policy</title>
-</head>
-<body>
-<section>
+    <title>{% block title %}Privacy policy{% endblock %}</title>
+    <link href="{% static 'base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'privacy_policy.css' %}" />
+{% endblock %}
+{% block content %}
+<section class="privacy-policy">
     {{ privacy|safe }}
-    <a href="/media/privacy_policy.docx" download> Download</a>
 </section>
-</body>
+<a class="download-doc" href="/media/privacy_policy.docx" download> Download</a>
+{% endblock %}
 </html>

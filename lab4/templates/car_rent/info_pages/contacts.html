@@ -1,22 +1,28 @@
 <!DOCTYPE html>
+{% extends "car_rent/base.html" %}
+{% load static %}
 <html lang="en">
-<head>
+{% block head %}
     <meta name="description" content="Page with contacts"/>
     <meta name="author" content="Vadim Zhur"/>
     <meta charset="UTF-8">
-    <title>Contacts</title>
-</head>
-<body>
-    {% for worker in workers %}
-            <section class="item">
+    <title>{% block title %}Contacts{% endblock %}</title>
+    <link href="{% static 'base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'contacts.css' %}" />
+{% endblock %}
+{% block content %}
+    <section class="workers">
+        {% for worker in workers %}
+            <article class="worker">
                 <details>
                     <summary><strong>{{worker.name}}</strong></summary>
                     <p> <em>{{worker.phone_number}}</em> </p>
                     <p> <em>{{worker.email}}</em> </p>
                 </details> <br>
                 <img src="{% if worker.image %}{{ worker.image.url }}{% endif %}"> <br>
-                {{ worker.work_info }} <br>
-            </section>
-    {% endfor %}
-</body>
+                <p class="worker-info"> {{ worker.work_info }} </p> <br>
+            </article>
+        {% endfor %}
+    </section>
+{% endblock %}
 </html>

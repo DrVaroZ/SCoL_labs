@@ -1,27 +1,27 @@
 {% extends "car_rent/base.html" %}
 {% load static %}
-
-{% block title %}
-Reviews
-{% endblock %}
-{% block extra_head %}
-<meta name="description" content="Page with reviews">
-<meta name="author" content="Vadim Zhur">
+{% block head %}
+    <meta name="description" content="Page with reviews">
+    <meta name="author" content="Vadim Zhur">
+    <meta charset="UTF-8">
+    <title>{% block title %}Reviews{% endblock %}</title>
+    <link href="{% static 'base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'reviews.css' %}" />
 {% endblock %}
 {% block content %}
-
-<footer>
+<header>
     <h1 align="center">Reviews</h1>
-</footer>
+</header>
 <section itemscope itemtype="https://schema.org/Review">
     {% for review in reviews %}
-        <h2 itemprop="author">{{review.author.first_name}}</h2>
-        <p itemprop="reviewBody">{{review.text}}</p>
-        <p itemprop="reviewRating"> {{ review.mark }}</p>
-        <p itemprop="datePublished">{{review.date}}</p>
+        <section class="review">
+            <h2 class="author" itemprop="author">{{review.author.first_name}}</h2>
+            <p itemprop="reviewBody">{{review.text}}</p>
+            <p itemprop="reviewRating"> {{ review.mark }}</p>
+            <p itemprop="datePublished">{{review.date}}</p>
+        </section>
         <hr/>
     {% endfor %}
-    <a href="create/">Create review</a>
+    <a class="create-review" href="create/">Create review</a>
 </section>
-
 {% endblock %}

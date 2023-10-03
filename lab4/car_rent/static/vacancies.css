@@ -1,0 +1,38 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f0ffff;
+}
+
+.vacancy-list {
+    max-width: 800px;
+    margin: 10px auto;
+}
+
+.vacancy {
+    float: left;
+    width: 50%; /* Adjust the width as needed, leaving some space for margins */
+    margin: 10px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #FFD6FE;
+}
+
+summary {
+    font-family: 'Pacifico', cursive;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+details {
+    font-family: 'Pacifico', cursive;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* Clear the float after every two items to prevent layout issues */
+.vacancy:nth-child(2n+1) {
+    clear: both;
+}

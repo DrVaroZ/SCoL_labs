@@ -1,19 +1,25 @@
 <!DOCTYPE html>
+{% extends "car_rent/base.html" %}
+{% load static %}
 <html lang="en">
-<head>
+{% block head %}
     <meta name="description" content="Page with vacancies"/>
     <meta name="author" content="Vadim Zhur"/>
     <meta charset="UTF-8"/>
-    <title>Vacancies</title>
-</head>
-<body>
-    {% for vacancy in vacancies %}
-            <section class="item">
+    <title>{% block title %}Vacancies{% endblock %}</title>
+    <link href="{% static 'base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'vacancies.css' %}" />
+{% endblock %}
+{% block content %}
+    <section class="vacancy-list">
+        {% for vacancy in vacancies %}
+            <section class="vacancy">
                 <details>
                     <summary><strong>{{ vacancy.position }} {{ vacancy.salary }} <span>&#36;</span> </strong></summary>
                     <p>{{ vacancy.position_info }}</p>
                 </details> <br>
             </section>
-    {% endfor %}
-</body>
+        {% endfor %}
+    </section>
+{% endblock %}
 </html>

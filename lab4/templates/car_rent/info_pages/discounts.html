@@ -1,28 +1,36 @@
 <!DOCTYPE html>
+{% extends "car_rent/base.html" %}
+{% load static %}
 <html lang="en">
-<head>
+{% block head %}
     <meta name="description" content="Page with discounts"/>
     <meta name="author" content="Vadim Zhur"/>
     <meta charset="UTF-8">
-    <title>Discounts</title>
-</head>
-<body>
+    <title>{% block title %}Discounts{% endblock %}</title>
+    <link href="{% static 'base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'discounts.css' %}" />
+{% endblock %}
+{% block content %}
     <h3>Active discounts</h3>
-    {% for active_discount in active_discounts %}
-            <section class="item">
-                <strong>{{ active_discount.code }}</strong> <br>
-                {{ active_discount.valid_from }} {{ active_discount.valid_to }} <br>
-                {{ active_discount.discount }} <span>&#37;</span> <br>
-            </section>
-    {% endfor %}
+    <ul class="active-disc-list">
+        {% for active_discount in active_discounts %}
+        <li class="active-disc">
+            <strong>{{ active_discount.code }}</strong> <br>
+            {{ active_discount.valid_from }} {{ active_discount.valid_to }} <br>
+            {{ active_discount.discount }} <span>&#37;</span> <br>
+        </li>
+        {% endfor %}
+    </ul>
 
     <h3>Expired discounts</h3>
-    {% for expired_discount in expired_discounts %}
-            <section class="item">
-                <strong>{{ expired_discount.code }}</strong> <br>
+    <ul class="expired-disc-list">
+        {% for expired_discount in expired_discounts %}
+        <li class="expired-disc">
+            <strong>{{ expired_discount.code }}</strong> <br>
                 {{ expired_discount.valid_from }} {{ expired_discount.valid_to }} <br>
                 {{ expired_discount.discount }} <span>&#37;</span> <br>
-            </section>
-    {% endfor %}
-</body>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
 </html>

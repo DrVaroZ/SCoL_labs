@@ -1,10 +1,16 @@
 <!DOCTYPE html>
+{% extends "car_rent/base.html" %}
+{% load static %}
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-<head>
+{% block head %}
+    <meta name="description" content="Page with experiments"/>
+    <meta name="author" content="Vadim Zhur"/>
     <meta charset="UTF-8">
-    <title>Experiments</title>
-</head>
-<body>
+    <title>{% block title %}Experiments{% endblock %}</title>
+    <link href="{% static 'base.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'experiments.css' %}" />
+{% endblock %}
+{% block content %}
 <h2>Navigation</h2>
 <ul class="nav">
     <li><a href="#list-example">List example</a></li>
@@ -280,6 +286,12 @@
     <td>60 million</td>
     <td>Italian</td>
   </tr>
+  <tr>
+    <td>Belarus</td>
+    <td>Minsk</td>
+    <td>9 million</td>
+    <td></td>
+  </tr>
 </table>
 <hr>
 <h3 id="audio-example"> Audio example</h3>
@@ -353,5 +365,5 @@
 <section hidden>
     <p>Hidden information</p>
 </section>
-</body>
+{% endblock %}
 </html>

@@ -1,0 +1,38 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f0ffff;
+}
+
+.review {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #D6EAFF;
+    color: #13589D;
+    font-family: 'Pacifico', cursive;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.author {
+    color: #FF8317;
+    font-weight: bold;
+}
+
+.create-review {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    text-decoration: none;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #7B7B7B;
+    border-radius: 5px;
+    background-color: #D6EAFF;
+    color: #FF7F1C;
+    font-weight: bold;
+    width: 10%;
+    text-align: center;
+}
