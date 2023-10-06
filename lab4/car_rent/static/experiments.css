@@ -1,41 +1,34 @@
-/* Стили для таблицы */
 table {
-    width: 80%; /* Ширина таблицы */
-    margin: 20px auto; /* Центрирование таблицы на странице */
-    border-collapse: collapse; /* Убираем двойные линии между ячейками */
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
 }
 
-/* Стили для заголовка таблицы */
 th {
-    background-color: yellow; /* Цвет фона */
-    padding: 10px; /* Внутренний отступ */
-    text-align: center; /* Выравнивание по центру */
+    background-color: yellow;
+    padding: 10px;
+    text-align: center;
 }
 
-/* Стили для пустых ячеек */
 td:empty {
-    background-color: green; /* Цвет фона для пустых ячеек */
+    background-color: green;
 }
 
-/* Стили для строк и столбцов */
 tr:nth-child(odd) {
-    background-color: #f9f9f9; /* Цвет фона для нечетных строк */
+    background-color: #f9f9f9;
 }
 
-/* Горизонтальное и вертикальное выравнивание в ячейках */
 td, th {
-    padding: 10px; /* Внутренний отступ */
-    text-align: left; /* Горизонтальное выравнивание */
-    vertical-align: middle; /* Вертикальное выравнивание по центру */
-    border: 1px solid #ddd; /* Границы ячеек */
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+    border: 1px solid #ddd;
 }
 
-/* Стили для первого столбца */
 td:first-child, th:first-child {
-    text-align: center; /* Горизонтальное выравнивание по центру */
+    text-align: center;
 }
 
-/* Стили для последнего столбца */
 td:last-child {
-    text-align: right; /* Горизонтальное выравнивание вправо */
+    text-align: right;
 }

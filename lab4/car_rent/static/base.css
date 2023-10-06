@@ -1,13 +1,54 @@
 @import url(http://fonts.googleapis.com/css?family=Ubuntu);
 
+@font-face {
+    font-family: 'MainFont';
+    src: url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+}
+
+@font-face {
+    font-family: 'AlternateFont';
+    src: url('/media/LibreBaskerville-Regular.ttf') format('ttf');
+}
+
 body {
     margin:0;
     padding:0;
-    font-family:helvetica, sans-serif;
+    font-family: 'MainFont', 'AlternateFont', sans-serif;
+    background-color: #f0ffff;
+}
+
+/* Стили для устройств с шириной экрана до 600px и высотой до 800px */
+@media screen and (max-width: 600px) and (max-height: 800px) {
+    body {
+        background-color: lightblue;
+        font-size: 14px;
+    }
+
+    /* Дополнительные стили для этого диапазона */
 }
 
 h1, h2, h3, h4, h5 , h6 {
     font-family: 'Ubuntu', sans-serif; font-weight:normal;
+}
+
+p {
+    text-indent: 1em; /* Отступ первой строки */
+    line-height: 1.5; /* Пример значения для межстрочного интервала */
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    hyphens: auto; /* Включаем автоматический перенос слов */
+    word-wrap: break-word; /* Разрыв слов при нехватке места */
+    text-align: justify; /* Выравнивание по ширине */
+}
+
+span.capital {
+    font-variant: small-caps;
+}
+
+.container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 a {
@@ -17,6 +58,10 @@ a {
 
 a:hover {
     color:#77b6e2;
+}
+
+button {
+    cursor: pointer; /* Change cursor to a pointer */
 }
 
 a.button, input[type="submit"] {
@@ -184,40 +229,47 @@ ul.errorlist {
     overflow:hidden;
 }
 
-.product-list .item {
-    width:25%;
-    padding:10px 20px 10px 0;
-    float:left;
-    text-align:center;
-    line-height:1.2;
+.car-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
-.product-list .item img {
+.car-list .item {
+    width: 25%;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.car-list .item img {
     width:100%;
     margin-bottom:8px;
 }
 
-.product-detail {
+.car-detail {
     text-align:justify;
 }
 
-.product-detail .price {
+.car-detail .price {
     color:#333;
     font-size:28px;
     font-weight:bold;
 }
 
-.product-detail img {
+.car-detail img {
     width:40%;
     float:left;
     padding:0 20px 20px 0;
 }
 
-.product-detail h1 {
+.car-detail h1 {
     margin-bottom:0;
 }
 
-.product-detail h2 {
+.car-detail h2 {
     margin-top:10px;
 }
 
