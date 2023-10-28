@@ -32,3 +32,117 @@ td:first-child, th:first-child {
 td:last-child {
     text-align: right;
 }
+
+blockquote::before {
+    content: "«";
+    font-size: 1.5em;
+}
+
+blockquote::after {
+    content: "»";
+    font-size: 1.5em;
+}
+
+.special-list {
+    list-style: none;
+}
+
+.special-list li::before {
+    content: "\1999"; /* Юникод-символ для маркера • */
+    margin-right: 8px;
+    color: #ff9900;
+}
+
+a:link {
+    color: blue;
+}
+
+/* Посещенные ссылки */
+a:visited {
+    color: purple;
+}
+
+/* Ссылки при наведении курсора */
+a:hover {
+    color: red;
+}
+
+/* Нажатые ссылки */
+a:active {
+    color: green;
+}
+
+/* Элементы в фокусе */
+:focus {
+    outline: 2px solid orange;
+}
+
+/* Псевдоклассы для элементов в списке и таблице */
+/* Первый элемент в списке */
+li:first-child {
+    font-weight: bold;
+}
+
+/* Последний элемент в списке */
+li:last-child {
+    font-style: italic;
+}
+
+/* N-й элемент в списке */
+li:nth-child(3) {
+    color: brown;
+}
+
+/* Первый элемент в таблице */
+tr:first-child {
+    background-color: #f0f0f0;
+}
+
+/* Последний элемент в таблице */
+tr:last-child {
+    background-color: #e0e0e0;
+}
+
+/* N-й элемент в таблице */
+tr:nth-child(2n) {
+    background-color: #c0c0c0;
+}
+
+/* Псевдоклассы для элементов формы */
+/* Доступные элементы формы */
+:enabled {
+    border: 1px solid #00cc00;
+}
+
+/* Заблокированные элементы формы */
+:disabled {
+    background-color: #f0f0f0;
+}
+
+/* Обязательные элементы формы */
+:required {
+    border: 1px solid red;
+}
+
+/* Элементы формы со значениями вне диапазона */
+:out-of-range {
+    background-color: #ff9999;
+}
+
+/* Включенные флажки и переключатели */
+:checked {
+    background-color: yellow;
+}
+
+/* Отображение кавычек в зависимости от языка цитаты */
+q:lang(ru) {
+    quotes: "“" "”" "‘" "’";
+}
+
+q:lang(en) {
+    quotes: "«" "»" "‹" "›";
+}
+
+.form input[type="checkbox"]:checked + label, input[type="radio"]:checked + label {
+    background-color: blue;
+}

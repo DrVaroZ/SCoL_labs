@@ -17,7 +17,7 @@ h3 {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 250, 1.6);
     margin-bottom: 20px; /* Adjust spacing between circles */
-    background-color: orange
+    background: linear-gradient(blue, pink);
 }
 
 .image {

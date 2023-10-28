@@ -151,7 +151,7 @@ def show_contacts_page(request):
 
 
 def show_privacy_policy_page(request):
-    doc = Document("../lab4/media/privacy_policy.docx")
+    doc = Document("../lab4/media/privacy.docx")
     html_code = ""
     for paragraph in doc.paragraphs:
         paragraph_html = paragraph.text.replace('\n', '<br>')
@@ -209,3 +209,8 @@ def show_discounts_page(request):
 def show_experiments_page(request):
     return render(request,
                   'car_rent/info_pages/experiments.html')
+
+
+def show_js_sandbox_page(request):
+    return render(request,
+                  'car_rent/info_pages/js_sandbox.html')

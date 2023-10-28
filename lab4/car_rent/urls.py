@@ -20,6 +20,7 @@ urlpatterns = [
     path('reviews/create/', views.create_review),
     path("discounts/", views.show_discounts_page, name='discounts'),
     path("experiments/", views.show_experiments_page, name='experiments'),
+    path("js_sandbox/", views.show_js_sandbox_page, name='js_sandbox'),
     path('<str:car_brand>/', views.car_list,
          name='car_list_by_brand'
          ),

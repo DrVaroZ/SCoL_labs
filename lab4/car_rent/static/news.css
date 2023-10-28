@@ -17,6 +17,8 @@ article {
     overflow: hidden;
     background-color: #D6EAFF;
     border-radius: 5px;
+    column-count: 1; /* Устанавливаем количество колонок */
+    column-gap: 20px; /* Расстояние между колонками */
 }
 
 img {
@@ -48,4 +50,10 @@ h2 {
     text-decoration: none;
     color: #FF7F1C;
     font-weight: bold;
+}
+
+.scroll-image {
+    position: relative;
+    width: 200px; /* Adjust width as needed */
+    transition: transform 0.5s;
 }

@@ -30,7 +30,8 @@
                 <button type="submit" name="sort" value="descending">Sort in descending order</button>
             </form>
         </h1>
-        {% for car in cars %}
+        <section class="car-cont">
+            {% for car in cars %}
             <div class="item">
                 <a href="{{ car.get_absolute_url }}">
                     <img src="{% if car.image %}{{ car.image.url }}{% else %}{% static 'media/no_image.png' %}{% endif %}">
@@ -39,5 +40,6 @@
                 {{ car.brand }} {{ car.car_model }}
             </div>
         {% endfor %}
+        </section>
     </div>
 {% endblock %}

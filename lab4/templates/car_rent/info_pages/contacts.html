@@ -13,6 +13,7 @@
 {% block content %}
     <section class="workers">
         {% for worker in workers %}
+        <section class="card" onmouseover="startRotate(this)" onmouseout="stopRotate(this)" onmousemove="rotate(this, event)">
             <article class="worker">
                 <details>
                     <summary><strong>{{worker.name}}</strong></summary>
@@ -22,7 +23,9 @@
                 <img src="{% if worker.image %}{{ worker.image.url }}{% endif %}"> <br>
                 <p class="worker-info"> {{ worker.work_info }} </p> <br>
             </article>
+        </section>
         {% endfor %}
     </section>
+<script src="{% static 'js/card_effects.js'%}"></script>
 {% endblock %}
 </html>

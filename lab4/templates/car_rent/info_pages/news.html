@@ -15,11 +15,12 @@
         {% for article in news %}
             <article class="article">
                 <strong>{{ article.title }} </strong> <br>
-                <img src="{% if article.image %}{{ article.image.url }}{% endif %}"> <br>
+                <img src="{% if article.image %}{{ article.image.url }}{% endif %}" class="scroll-image"> <br>
                 <p class="short-description"> {{ article.short }} </p> <br>
                 <a class="read-full" href="{{ article.full_link }}">{{ "read more" }}</a><br>
             </article>
         {% endfor %}
     </section>
+<script src="{% static 'js/scrolling_animation.js'%}"></script>
 {% endblock %}
 </html>
