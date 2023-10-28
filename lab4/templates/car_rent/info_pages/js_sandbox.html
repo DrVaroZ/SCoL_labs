@@ -11,21 +11,13 @@
     <link rel="stylesheet" href="{% static 'js_sandbox.css' %}" />
 {% endblock %}
 {% block content %}
-    <div class="banner" id="banner1">
-    <a href="https://www.bmw.fr/fr/accueil.html" target="_blank"><img width="500px" height="250px" src="../media/bmw.png" alt="Баннер BMW"></a>
-  </div>
-  <div class="banner" id="banner2">
-    <a href="https://www.audi.fr/fr/web/fr.html" target="_blank"><img width="500px" height="250px" src="../media/ferrari.png" alt="Баннер Ferrari"></a>
-  </div>
-  <div class="banner" id="banner3">
-    <a href="https://www.renault.fr/" target="_blank"><img width="500px" height="250px" src="../media/ford1.png" alt="Баннер Ford"></a>
-  </div>
-  <form id="rotationForm" {% if not user.is_superuser %}style="display: none;"{% endif %}>
-    <label for="rotationInterval">Интервал ротации (сек):</label>
-    <input  type="number" id="rotationInterval" value="2">
-    <button type="button" id="startRotation">Start Rotation</button>
-    <button type="button" id="stopRotation">Stop Rotation</button>
-  </form>
-<script src="{% static 'js/banners.js'%}"></script>
+    <div id="countdown"></div>
+
+    <section class="content">
+    <h1>Welcome to Our Website</h1>
+    <p>This is some information that should be hidden until age confirmation.</p>
+    </section>
+
+<script src="{% static 'js/timer.js'%}"></script>
 {% endblock %}
 </html>

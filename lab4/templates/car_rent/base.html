@@ -22,7 +22,7 @@
     <a href = "{% url 'car_rent:reviews' %}" > Reviews </a>
     <a href = "{% url 'car_rent:discounts' %}" > Discounts </a>
     <a href = "{% url 'car_rent:experiments' %}" > Experiments</a>
-    <a href = "{% url 'car_rent:js_sandbox' %}" > JS Sandbox</a>
+    <a href="{% url 'car_rent:js_sandbox' %}" onclick="return checkAge(event)">JS Sandbox</a>
 </nav>
 </div>
 <p>Current Date <span id='date'></span>.</p>
@@ -87,5 +87,6 @@
     {% block content %}
     {% endblock %}
 </div>
+<script src="{% static 'js/adult_checker.js'%}"></script>
 </body>
 </html>

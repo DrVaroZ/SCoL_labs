@@ -11,11 +11,28 @@
     <link rel="stylesheet" href="{% static 'privacy_policy.css' %}" />
 {% endblock %}
 {% block content %}
+<section>
+    <form>
+        <label for="fontSize">Change font size:</label>
+        <select id="fontSize" onchange="changeFontSize(this)">
+            <option value="16">Small</option>
+            <option value="18">Medium</option>
+            <option value="20">Big</option>
+        </select>
+
+        <label for="textColor">Change text colour:</label>
+        <input type="color" id="textColor" onchange="changeTextColor(this.value)">
+
+        <label for="bgColor">Change background colour:</label>
+        <input type="color" id="bgColor" onchange="changeBgColor(this.value)">
+    </form>
+</section>
 <section class="privacy-policy">
     <p>
         {{ privacy|safe }}
     </p>
 </section>
 <a class="download-doc" href="/media/privacy_policy.docx" download> Download</a>
+<script src="{% static 'js/text_editor.js'%}"></script>
 {% endblock %}
 </html>
