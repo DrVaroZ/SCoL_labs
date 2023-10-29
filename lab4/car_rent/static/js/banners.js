@@ -1,39 +1,39 @@
+// JavaScript
 const banners = document.querySelectorAll('.banner');
 let bannerIndex = 0;
 let rotationInterval;
-let isPageFocused = true; // Предполагается, что страница загружена с фокусом
 
-// Функция для отображения конкретного баннера
-function showBanner(index) {
-    banners.forEach(banner => banner.style.display = 'none');
-    banners[index].style.display = 'block';
+function rotateBanners() {
+  banners.forEach(banner => banner.style.display = 'none');
+  bannerIndex = (bannerIndex + 1) % banners.length;
+  banners[bannerIndex].style.display = 'block';
 }
 
-// Функция для автоматической смены баннеров
 function startRotation() {
-    rotationInterval = setInterval(() => {
-        if (isPageFocused) {
-            bannerIndex = (bannerIndex + 1) % banners.length;
-            showBanner(bannerIndex);
-        }
-    }, 5000); // Интервал смены баннеров - 5000 миллисекунд (5 секунд)
+  const rotationIntervalInput = document.getElementById('rotationInterval');
+  const interval = parseInt(rotationIntervalInput.value) * 1000;
+
+  if (!rotationInterval) {
+    rotationInterval = setInterval(rotateBanners, interval);
+  }
 }
 
-// Остановка автоматической смены баннеров
 function stopRotation() {
+  if (rotationInterval) {
     clearInterval(rotationInterval);
+    rotationInterval = null;
+  }
 }
 
-// Проверка фокуса страницы
-window.onblur = () => {
-    isPageFocused = false;
+document.getElementById('startRotation').addEventListener('click', startRotation);
+document.getElementById('stopRotation').addEventListener('click', stopRotation);
+
+document.addEventListener('visibilitychange', function () {
+  if (document.hidden) {
     stopRotation();
-};
-
-window.onfocus = () => {
-    isPageFocused = true;
+  } else {
     startRotation();
-};
+  }
+});
 
-// Начало ротации баннеров при загрузке страницы
 startRotation();

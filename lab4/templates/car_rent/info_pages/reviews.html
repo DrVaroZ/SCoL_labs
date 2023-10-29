@@ -17,11 +17,14 @@
         <section class="review">
             <h2 class="author" itemprop="author">{{review.author.first_name}}</h2>
             <p itemprop="reviewBody">{{review.text}}</p>
-            <p itemprop="reviewRating"> {{ review.mark }}</p>
+            <p id="mark" itemprop="reviewRating"> {{ review.mark }}</p>
+            <section id="stars" class="stars"></section>
             <p itemprop="datePublished">{{review.date}}</p>
         </section>
         <hr/>
     {% endfor %}
+    <button class="generate-stars-button" onclick="createStars()">Generate Stars</button>
     <a class="create-review" href="create/">Create review</a>
 </section>
+<script src="{% static 'js/stars.js'%}"></script>
 {% endblock %}

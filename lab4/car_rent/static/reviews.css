@@ -35,3 +35,15 @@ body {
     width: 10%;
     text-align: center;
 }
+
+.stars {
+    font-size: 30px;
+    line-height: 30px;
+}
+
+.generate-stars-button {
+    background-color: #3498db;
+    margin: 5px;
+    color: #ffffff;
+    padding: 10px 20px;
+}

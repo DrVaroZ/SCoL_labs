@@ -24,7 +24,7 @@ function startCountdown() {
             if (remainingTime <= 0) {
                 clearInterval(interval);
                 localStorage.removeItem('startTime'); // Удаляем сохраненное время после завершения отсчета
-                document.getElementById('countdown').innerHTML = 'Время истекло';
+                document.getElementById('countdown').innerHTML = 'Time is up';
             } else {
                 timeDifference += 1000; // Обновляем разницу времени каждую секунду
             }

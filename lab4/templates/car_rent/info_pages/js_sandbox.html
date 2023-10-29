@@ -18,6 +18,92 @@
     <p>This is some information that should be hidden until age confirmation.</p>
     </section>
 
+    <button id="colorButton">Change theme</button>
+    <br>
+    <br>
+
+    <button onclick="transposeTable()">Transpose table</button>
+    <br>
+    <br>
+    <button onclick="addRow()">Add row</button>
+    <button onclick="addColumn()">Add column</button>
+    <br>
+    <br>
+    <label for="maxCells">Max cells to select in a row/column:</label>
+    <input type="number" id="maxCells" min="1" value="1">
+    <br>
+    <br>
+    <label for="tableSize">Table size:</label>
+    <input type="number" id="tableSize" min="1" value="5">
+    <button onclick="createNewTable()">Create table</button>
+    <br>
+    <br>
+    <table id="myTable"></table>
+
+    <h1>Car Class Demonstration</h1>
+
+     <div>
+        <h2>Functional Inheritance (Prototype-based)</h2>
+        <p>Make: <span id="makePrototype"></span></p>
+        <p>Model: <span id="modelPrototype"></span></p>
+        <p>Year: <span id="yearPrototype"></span></p>
+        <p>Additional Info (Car): <span id="carPrototypeInfo"></span></p>
+        <p>Color (Sedan): <span id="colorSedan"></span></p>
+        <p>Additional Info (Sedan): <span id="sedanPrototypeInfo"></span></p>
+     </div>
+
+     <hr>
+
+     <div>
+        <h2>Class and Extends</h2>
+        <p>Make: <span id="makeClass"></span></p>
+        <p>Model: <span id="modelClass"></span></p>
+        <p>Year: <span id="yearClass"></span></p>
+        <p>Additional Info (Car): <span id="carClassInfo"></span></p>
+        <p>Color (Sedan): <span id="colorClassSedan"></span></p>
+        <p>Additional Info (Sedan): <span id="sedanClassInfo"></span></p>
+     </div>
+
+   <h1>Поиск получателей посылок</h1>
+
+    <label for="senderName">Фамилия отправителя:</label>
+    <input type="text" id="senderName"><br>
+
+    <label for="receiverName">Фамилия получателя:</label>
+    <input type="text" id="receiverName"><br>
+
+    <label for="weight">Вес посылки (кг):</label>
+    <input type="number" id="weight"><br>
+
+    <label for="day">День отправления:</label>
+    <input type="number" id="day" min="1" max="31"><br>
+
+    <label for="month">Месяц отправления:</label>
+    <input type="number" id="month" min="1" max="12"><br>
+
+    <label for="year">Год отправления:</label>
+    <input type="number" id="year" min="1900"><br>
+
+    <button onclick="addPackage()">Добавить посылку</button><br>
+
+    <button onclick="findReceivingMultiplePackages()">Найти получателей</button><br>
+
+    <table id="outputTable">
+        <caption>Результаты</caption>
+        <thead>
+            <tr>
+                <th>Получатель</th>
+                <th>Общий вес посылок (кг)</th>
+            </tr>
+        </thead>
+        <tbody id="outputResult"></tbody>
+    </table>
+
+<script src="{% static 'js/background_effects.js'%}"></script>
+<script src="{% static 'js/themes.js'%}"></script>
+<script src="{% static 'js/individual_task.js'%}"></script>
+<script src="{% static 'js/oop.js'%}"></script>
+<script src="{% static 'js/table.js'%}"></script>
 <script src="{% static 'js/timer.js'%}"></script>
 {% endblock %}
 </html>
