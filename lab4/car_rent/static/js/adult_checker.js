@@ -3,8 +3,9 @@ function checkAge(event) {
 
     if (birthdate) {
         const inputDate = new Date(birthdate);
-        const today = new Date();
+        const today = new Date(); // Get the current date
         const ageDate = new Date(today - inputDate);
+        // 1970 is subtracted to calculate the number of years since the Unix epoch (January 1, 1970) to the user's birth year
         const years = Math.abs(ageDate.getUTCFullYear() - 1970);
         const dayOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 

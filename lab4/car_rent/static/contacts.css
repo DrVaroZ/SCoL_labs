@@ -45,7 +45,7 @@ details {
 }
 
 .card {
-    width: 300px; /* Ширина карточки */
+    width: 350px; /* Ширина карточки */
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
